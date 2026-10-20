@@ -1,0 +1,53 @@
+[package]
+name = "trail-status"
+description = "Week 3: explore the trail-status data, choose and train a model, embed it, compile it, and serve it over HTTP"
+edition.workspace = true
+version.workspace = true
+publish.workspace = true
+
+[dependencies]
+aprender.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tiny_http.workspace = true
+sha2 = "0.10"
+
+[[bin]]
+name = "explore"
+path = "src/bin/explore.rs"
+
+[[bin]]
+name = "compare"
+path = "src/bin/compare.rs"
+
+[[bin]]
+name = "train"
+path = "src/bin/train.rs"
+
+[[bin]]
+name = "trail-status-cli"
+path = "src/bin/cli.rs"
+
+[[bin]]
+name = "trail-status-api"
+path = "src/bin/api.rs"
+
+[[bin]]
+name = "embed-check"
+path = "src/bin/embed_check.rs"
+
+[[bin]]
+name = "apr-format-check"
+path = "src/bin/apr_format_check.rs"
+
+[[bin]]
+name = "standalone-check"
+path = "src/bin/standalone_check.rs"
+
+[[bin]]
+name = "api-check"
+path = "src/bin/api_check.rs"
+
+[[bin]]
+name = "api-parity"
+path = "src/bin/api_parity.rs"

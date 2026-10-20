@@ -1,0 +1,9 @@
+{
+  "labels": [
+    "both_open",
+    "blankets_open_rope_closed",
+    "blankets_closed_rope_open",
+    "both_closed"
+  ],
+  "note": "blankets=first component, rope=second component of each label name; recover the original two binary columns via LABELS[label]."
+}

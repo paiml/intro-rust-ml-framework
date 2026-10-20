@@ -1,0 +1,13 @@
+/target
+# Model files are large and come from `scripts/get-model.sh` (see README).
+/models/
+# Scratch output the examples write while you follow along.
+/out/
+
+# Written by the lesson 2.3 commands while following along
+/serve.log
+/chat.json
+/answer-*.json
+/stream.txt
+/before.txt
+/after.txt

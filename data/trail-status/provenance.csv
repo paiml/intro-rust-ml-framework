@@ -1,0 +1,472 @@
+status,label,source
+all trails are closed at blankets creek and rope mill parks due to wet conditions,both_closed,hand-labeled
+all trail are closed due to wet conditions.,both_closed,weak-labeled:blanket-closed
+"blankets creek trails are open, except quehl holler and some of mosquito flats. rope mill is closed.",blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets creek is open. rope mill is closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are open. blankets creek will be closed on sun. nov 9th for hunting.,both_open,weak-labeled:blanket-open
+trails at blankets creek and rope mill parks are closed due to wet conditions.,both_closed,weak-labeled:per-trail-explicit
+all trails at blankets creek are open and rope mill remains closed due to wet conditions.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are closed at blankets creek and rope mill due to freeze/thaw soil conditions.,both_closed,weak-labeled:blanket-closed
+trails are open except for the holler.,both_open,weak-labeled:blanket-open
+all trails are closed. psa ! pedalpalooza has been rescheduled to oct 16,both_closed,weak-labeled:blanket-closed
+blankets creek trails are open. taylor randahl trails are closed for the challenge 4 race.,both_open,weak-labeled:one-trail-explicit+baseline
+"trails at closed due to wet conditions. trails will continue to be closed at rope mill on sat, 11/12/2023 until 1pm for the dirty duathlon trail race",both_open,weak-labeled:subfeature-closure-default-open
+"blankets creek - mosquito flats (creekside) is closed until repair, taylor randahl - all trails open.",blankets_closed_rope_open,weak-labeled:one-trail-explicit+baseline
+all trails are closed!,both_closed,hand-labeled
+blankets creek trails are open. taylor randahl memorial trails are closed for bridge installation.,both_open,weak-labeled:one-trail-explicit+baseline
+the trails at blankets creek and rope mill are closed due to wet conditions.,both_closed,weak-labeled:per-trail-explicit
+all trails are open. blankets creek will be closed saturday june 3rd for the 6 hour race.,both_open,weak-labeled:blanket-open
+all trails at blankets and rope mill are closed.,both_closed,weak-labeled:per-trail-explicit
+bc trails are open. rm are closed.,both_open,weak-labeled:blanket-open
+all trails are closed due to inclement weather.,both_closed,weak-labeled:blanket-closed
+all trails are open at rope mill and blankets creek the holler is still under assessment,both_open,hand-labeled
+trails are closed due to wet conditions. blankets creek will be closed for a race on saturday the 27th until 4pm.,both_closed,weak-labeled:blanket-closed
+trails are open. vmt 3.0 is open!!,both_open,weak-labeled:blanket-open
+the trails at blankets creek are rope mill are open.,both_open,weak-labeled:per-trail-explicit
+"rope mill closed (race), blankets creek open. bc will be closed sun. nov 9th for hunting",blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets creek is open. rope mill is still closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets creek is open. rope mill is closed due to wet conditions.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets creek is open rope mill is closed,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are closed due to freeze thaw conditions.,both_closed,weak-labeled:blanket-closed
+"all trails at blankets creek and rope mill are open. vmt need tires, get your ride on.",both_open,weak-labeled:per-trail-explicit
+blankets creek and rope mill are open!,both_open,weak-labeled:per-trail-explicit
+trails at blankets creek are closed all day for a crpa sponsored deer hunt. rope mill is open,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+rope mill is open. blankets creek is closed.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+blankets creek and rope mill are closed due to wet trail conditions,both_closed,weak-labeled:per-trail-explicit
+bc trails are open trmbt are closed,both_open,weak-labeled:blanket-open
+all trails are open! blankets creek will be closed sunday 11/30 for hunting!,both_open,weak-labeled:blanket-open
+blankets creek is open except for the holler and rope mill remains closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+psa ! starting october 5th the mill trails at rope mill will be closed for maintenance. all trails are closed.,both_closed,weak-labeled:blanket-closed
+blankets creek closed. rope mill open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+blankets creek trails are open. rope mill closed for mga dirty duathlon race until approx. 4pm,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are closed due to wet conditions blankets creek will be closed sunday morning for a private event,both_closed,hand-labeled
+blankets creek is open. access vmt via the right side of mosquito bites which will be 2-way traffic. rope mill remains closed due to flooding.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are closed.,both_closed,weak-labeled:blanket-closed
+all trails are open at blankets creek and rope mill (except the holler),both_open,hand-labeled
+all trails are open at blankets creek and rope mill park.,both_open,weak-labeled:blanket-open
+all trails are closed at blankets creek and rope mill due to freeze/thaw soil conditions,both_closed,hand-labeled
+trails are open at blankets creek; trails are closed at rope mill park due to a search and rescue operation.,both_open,weak-labeled:blanket-open
+all trails at blankets creek are closed until after dirty duathlon. trails at taylor randahl at rope mill are open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+trails at blankets and rope mill are open.quehl holler is closed.,both_open,weak-labeled:per-trail-explicit
+blankets creek is closed rope mill is open,blankets_closed_rope_open,hand-labeled
+all trails are open at blankets creek and rope mill parks blankets creek will be closed sunday 12/19/2021 until noon for a private event,both_open,hand-labeled
+trails are closed,both_closed,weak-labeled:blanket-closed
+"trails at blankets creek are open except for the holler. trails at rope mill are open, however the chains will be removed this afternoon.",both_open,weak-labeled:per-trail-explicit
+"blankets creek is open, rope mill remains closed",blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets creek is closed all day 8/13 for the six hour race taylor randahl is open,both_closed,hand-labeled
+"feel free to come around 2pm for the christmas party at blankets. visitors will be admitted, but the trails will remain closed.",both_open,weak-labeled:subfeature-closure-default-open
+"trails are open, except mosquito flats (right side) from hamilton's hop to vmt trailhead",both_open,weak-labeled:blanket-open
+the trails at blankets creek and rope mill are open. mosquito flats creek side and the holler are closed.,both_open,weak-labeled:per-trail-explicit
+rope mill is open. blankets creek is open except for the holler and mosquito flats (creekside).,both_open,weak-labeled:per-trail-explicit
+blankets creek is open except for the holler. rope mill trails remain closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets creek is closed sunday 1/09 for a private event until noon. rope mill is open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails are closed due to extremely dangerous conditions from downed trees and oversaturated ground.,both_closed,weak-labeled:blanket-closed
+all trails are closed. .,both_closed,weak-labeled:blanket-closed
+all trails are closed at blankets creek and rope mill for wet conditions.,both_closed,weak-labeled:blanket-closed
+the trails at rope mill and blankets creek are open!,both_open,weak-labeled:per-trail-explicit
+the trails at blankets creek and rope mill are closed due to wet conditions,both_closed,weak-labeled:per-trail-explicit
+trails are open except for mosquito bite & quehl holler @ blankets,both_open,weak-labeled:blanket-open
+the holler is closed. all other trails at blankets and rope mill are open.,both_open,weak-labeled:per-trail-explicit
+all trails are closed due to extensive storm damage,both_closed,hand-labeled
+all trails are open blankets creek will be closed for a race on saturday 9/5 until 4pm,both_open,hand-labeled
+trails at blankets creek except for the holler are open. rope mill park remains closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+the trails at blankets creek and rope mill are open. the mill trails will be closed beginning oct 18 for trail maintenance.,both_open,weak-labeled:per-trail-explicit
+the holler must remain closed longer to allow the new work to fully dry.,both_open,weak-labeled:subfeature-closure-default-open
+trails open,both_open,weak-labeled:blanket-open
+all trails closed due to wet conditions,both_closed,weak-labeled:blanket-closed
+blankets creek is open. rope mill trails remain closed due to wet conditions.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are closed,both_closed,hand-labeled
+all trails are closed due to wet weather,both_closed,weak-labeled:blanket-closed
+blankets creek is closed due to wet conditions. rope mill remains open,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails are open - except for quehl holler,both_open,hand-labeled
+the trails at blankets creek and rope mill are open,both_open,weak-labeled:per-trail-explicit
+rope mill is open. blankets creek is closed for the mga blankets 3 to 6 hour race.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+"blankets creek, except the holler, is open and rope mill remains closed due to wet conditions.",blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails open,both_open,weak-labeled:blanket-open
+blankets creek is open!the holler and rope mill remain closed due to wet conditions,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails closed,both_closed,weak-labeled:blanket-closed
+the trails at blankets creek and rope mill are open. blankets creek will be closed sunday jan 23rd for a private event.,both_open,weak-labeled:per-trail-explicit
+trails at blankets creek and rope mill are closed.,both_closed,weak-labeled:per-trail-explicit
+all trails are open!! *rope mill will be closed sat. nov 8 for a race.,both_open,weak-labeled:blanket-open
+rope mill and blankets creek are open except for the holler. avoid mosquito flats between hamilton hop and vmt traillead.,both_open,weak-labeled:per-trail-explicit
+all trails at blankets creek and rope mill are closed due to inclement weather.,both_closed,weak-labeled:per-trail-explicit
+trails at blankets creek are open. rope mill remains closed due to wet conditions.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets creek is closed today for a race. rope mill is open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+"note: trail status is always up to date and accurate. the date stamp simply refers to the last date it changed, not the last time it was updated. if it reads the trails are open and the date stamp reads a week ago that tells you the trails have been open for a week. when trails are closed they are closed to everyone including foot traffic.",both_open,weak-labeled:blanket-open
+trails at rope mill and blankets creek are open except for the holler and creekside of mb.,both_open,weak-labeled:per-trail-explicit
+all trails at blankets creek and rope mill are closed due to wet conditions.,both_closed,weak-labeled:per-trail-explicit
+blankets creek is open. rope mill remains closed due to wet conditions.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are open except explorer for bridge maintenance,both_open,weak-labeled:blanket-open
+all trails at blankets creek and rope mill parks are closed.,both_closed,weak-labeled:per-trail-explicit
+all trails are closed due to one heck of a storm,both_closed,weak-labeled:blanket-closed
+trails are open,both_open,weak-labeled:blanket-open
+blankets creek is open. the lower river side of mosquito bite is closed. mosquito bite will be two way traffic on the upper portion. rope mill is closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are open dwelling loop will be closed today 6/21 from 5pm-8pm for the time trial,both_open,hand-labeled
+the trails at blankets creek and rope mill are open. blankets will be closed saturday june 19 th for a race until after 4:00pm,both_open,weak-labeled:per-trail-explicit
+expect trails to be closed probably through new years weekend to unfreeze and dry out.,both_open,weak-labeled:subfeature-closure-default-open
+trails are closed to all users due to wet conditions.,both_closed,weak-labeled:blanket-closed
+taylor randahl (rope mill) - all trails open blankets creel - mosquito flats (creekside) trail is closed.,both_open,weak-labeled:one-trail-explicit+baseline
+"trails are open, back half of vmt is closed for construction",both_open,weak-labeled:blanket-open
+"the trails at blankets creek are open, rope mill trails remain closed",blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are closed due to extremely dangerous conditions from downed trees and oversaturated ground,both_closed,hand-labeled
+blankets creek is open except for the holler. all trails at rope mill are open.,both_open,weak-labeled:per-trail-explicit
+all trails open. quehl holler closed,both_open,weak-labeled:blanket-open
+blankets creek is open. rope mill to open at 9am in sat 6/20.,both_open,weak-labeled:per-trail-explicit
+blankets creek is closed. rope mill is open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+blankets creek open rope mill remains closed,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trails are closed for freeze/thaw conditions,both_closed,weak-labeled:blanket-closed
+all trails at blankets creek and rope mill are open except the holler which is closed due to poor conditions.,both_open,weak-labeled:per-trail-explicit
+all trails are closed due to wet conditions!!,both_closed,weak-labeled:blanket-closed
+all trails are open - new trails at rope mill are closed for final work on the entrance.,blankets_open_rope_closed,weak-labeled:one-trail-explicit+baseline
+blankets creek is closed for hunting. rope mill is open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails at rope mill and blankets creek are closed due to inclement weather in the area.,both_closed,weak-labeled:per-trail-explicit
+all trails are closed due to wet & freeze thaw conditions,both_closed,hand-labeled
+all trails at blankets creek and rope mill are open. blankets creek will be closed saturday april 14th for a race until mid-afternoon.,both_open,weak-labeled:per-trail-explicit
+rope mill trails are open. blankets creek trails closed for hunting.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+bc trails are closed until 1pm 9/10. trmbt's are open.,both_closed,weak-labeled:blanket-closed
+all trails are closed at blankets creek and rope park parks due to wet conditions,both_closed,hand-labeled
+"all trails are open. dwelling loop will be closed today, 6/21, from 5pm-8pm for the time trial.",both_open,weak-labeled:blanket-open
+"the trails at blankets creek and rope mill are open with the following closures: the holler is closed, mosquito flat, creek side is closed, avalanche is closed.",both_open,weak-labeled:per-trail-explicit
+all trails are closed! the snow turned to slush. all trails closed!,both_closed,weak-labeled:blanket-closed
+"blankets creek trails are closed, rope mill trails are open",blankets_closed_rope_open,weak-labeled:per-trail-explicit
+blankets creek is closed due to rain,both_closed,hand-labeled
+trails are open - except quehl holler & mosquito flats extension,both_open,weak-labeled:blanket-open
+"trails are open, except the mill",both_open,weak-labeled:blanket-open
+"blankets creek is open. rope mill remains closed. please be on the look out for downed trees and limbs, and use caution on rock and roll trail where new work is present and dirt is soft.",blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trails at rope mill are open blankets creek is closed due to current hunting activity,both_closed,hand-labeled
+all trails are open at blankets creek and rope mill parks.,both_open,weak-labeled:blanket-open
+blankets creek is closed sunday 1/09 for a private event until noon rope mill is open,blankets_closed_rope_open,hand-labeled
+trails are closed!,both_closed,weak-labeled:blanket-closed
+blankets creek is open except for the holler. rope mill is closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trails at blankets creek and rope mill are open.,both_open,weak-labeled:per-trail-explicit
+all trails at blankets creek snd rope mill are closed.,both_closed,weak-labeled:per-trail-explicit
+bc trails are open. rope mill are closed.,blankets_open_rope_closed,weak-labeled:one-trail-explicit+baseline
+all trails are open except mosquito bite,both_open,hand-labeled
+all trails are closed due to rain.,both_closed,weak-labeled:blanket-closed
+blankets creek is closed due to wet conditions. rope mill is open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails are closed due to extensive storm damage.,both_closed,weak-labeled:blanket-closed
+trails at blankets creek and rope mill are open. vmt remains closed due to construction.,both_open,weak-labeled:per-trail-explicit
+rope mill is closed due to flooding. blankets creek is closed due to wet conditions.,both_closed,weak-labeled:per-trail-explicit
+the trails at blankets creek and rope mill are open. the holler remains closed.,both_open,weak-labeled:per-trail-explicit
+blankets creek is closed until further notice for the 3/6 hour race. rope mill is open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+trails at blankets and rope mill are open.,both_open,weak-labeled:per-trail-explicit
+all trails are open. trees are down on gnarnia.,both_open,weak-labeled:blanket-open
+the holler and some technical trail features are closed due to enhanced injury risk during covid-19. please utilize social distancing practices when using the trails.,both_open,weak-labeled:subfeature-closure-default-open
+all trails at rope mill and blankets creek are open except for the lower half of the holler.,both_open,weak-labeled:per-trail-explicit
+trails at blankets creek and rope mill park are closed to all users due to wet conditions.,both_closed,weak-labeled:per-trail-explicit
+blankets trails are closed until 1pm saturday. rope mill trails are open,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails are closed at blankets creek and rope mill for wet conditions,both_closed,hand-labeled
+all trails are open (except the holler),both_open,hand-labeled
+all trails are open! - bkankets creek will be closed wednesday morning 6/10 for police and fire games. will re open wednesday afternoon,both_open,weak-labeled:blanket-open
+all trails are open at blankets creek and rope mill. blankets will be closed saturday april 2 for a race until early afternoon.,both_open,weak-labeled:blanket-open
+psa ! starting october 5th the mill trails at rope mill will be closed for maintenance all trails are closed,both_closed,hand-labeled
+trails are blankets creek are open. trails at rope mill are closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trmbt will be closed until 1pm saturday 10/27/12 for the rope mill dirty duathlon.,both_open,weak-labeled:subfeature-closure-default-open
+the trails at blankets creek in rope mill are open,both_open,weak-labeled:per-trail-explicit
+"trails are open, except the mill and quehl holler",both_open,weak-labeled:blanket-open
+"trails are open, except quehl holler",both_open,weak-labeled:blanket-open
+blankets creek is closed today for a race rope mill is open,blankets_closed_rope_open,hand-labeled
+blankets creek trails closed due to wet conditions. rope mill open,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails are open. yippie!!,both_open,weak-labeled:blanket-open
+blankets creek will be closing saturday september 27th at 7 pm for parking lot painting!!! blankets will be opening tbd on sunday morning!!! the holler is closed!!,both_open,weak-labeled:subfeature-closure-default-open
+blankets creek is open (except the holler). rope mill remains closed due to wet conditions.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+"the trails at blankets creek are open, rope mill is open except turbine.",both_open,weak-labeled:per-trail-explicit
+all trails are closed for wet conditions.,both_closed,weak-labeled:blanket-closed
+blankets creek and rope mill are open except for kv pass on vmt due to a tree blocking the trail.,both_open,weak-labeled:per-trail-explicit
+"work party, 10/17 at rope mill @ 9am. blankets creek and rope mill are open except for the holler.",both_open,weak-labeled:per-trail-explicit
+blankets creek trails are open. taylor randahl trails are closed,both_open,weak-labeled:one-trail-explicit+baseline
+all trails are closed at blankets creek and rope mill due to wet conditions.,both_closed,weak-labeled:blanket-closed
+all trails are closed! the snow turned to slush all trails closed!,both_closed,hand-labeled
+we have indefinitely closed the lower side of mosquite bite to fix area near the creek crossing. the high side is being used for vmt access only and is directional depending on the daily vmt direction.,both_open,weak-labeled:subfeature-closure-default-open
+"all trails are open, except quehl holler",both_open,weak-labeled:blanket-open
+vmt is closed,both_open,weak-labeled:subfeature-closure-default-open
+blankets creek trails are open. rope mill remains closed due to storm damage.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+"blankets creek is open, except qh. rope mill is closed.",blankets_open_rope_closed,weak-labeled:per-trail-explicit
+due to the heavy rain all trails are closed.,both_closed,weak-labeled:blanket-closed
+dwelling and the holler are closed at blankets creek and rope mill trails remained closed.,both_closed,weak-labeled:per-trail-explicit
+trails are still closed - sat 10/17,both_open,weak-labeled:subfeature-closure-default-open
+blankets creek open/rope mill closed,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are open rope mill will be closed saturday morning june 10th for a race,both_open,hand-labeled
+the trails at blankets creek and rope mill are open!,both_open,weak-labeled:per-trail-explicit
+blankets creek trails open. parking lot jumps and the holler remain closed. rope mill remains closed,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+"due to wet conditions, all trails at rope mill and blankets creek are closed.",both_closed,weak-labeled:per-trail-explicit
+all trails open quel holler closed,both_open,weak-labeled:blanket-open
+all trails are closed due to wet conditions. blankets creek will be closed sunday morning for a private event.,both_closed,weak-labeled:blanket-closed
+trails at blankets are open. quehl holler is closed. rope mill is closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+the trails are open,both_open,weak-labeled:blanket-open
+all trails at rope mill and blankets creek are open except for the holler.,both_open,weak-labeled:per-trail-explicit
+trails are closed due to wet conditions. please join us for our annual christmas party @ reformation woodstock on dec 11th @ 1pm.,both_closed,weak-labeled:blanket-closed
+blankets creek trails will re-open 6/20 by 5pm. rope mill trails are open.,both_open,weak-labeled:per-trail-explicit
+we have indefinitely closed the lower side of mosquite bite to fix area near the creek crossing. the high side is being used for vmt access only and is directional depending on the daily vmt direction. quehl holler is also closed.,both_open,weak-labeled:subfeature-closure-default-open
+all trails are open except quehl holler,both_open,hand-labeled
+all trails are open. blankets creek will be closed sun. 12/14 for hunting.,both_open,weak-labeled:blanket-open
+the trails at blankets creek and rope mill are closed due to wet weather,both_closed,weak-labeled:per-trail-explicit
+south loop will be closed today june 26th!!,both_open,weak-labeled:subfeature-closure-default-open
+"trails at rope mill park will be closed on saturday, may 15th until 12pm for a race.",both_open,weak-labeled:subfeature-closure-default-open
+all trails are open,both_open,hand-labeled
+trails are closed while crews clean up storm damage. possible opening early afternoon.,both_closed,weak-labeled:blanket-closed
+all trails at blankets creek and rope mill are closed due to wet conditions,both_closed,weak-labeled:per-trail-explicit
+trails at blankets and rope mill are open,both_open,weak-labeled:per-trail-explicit
+the creek side of mosquito flats is closed. all other trails are open.,both_open,weak-labeled:blanket-open
+"blankets creek is open, rope mill is closed",blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trails are open. blankets creek will be closed to the public from 10pm fri - 10pm sat 8/9/14,both_open,weak-labeled:blanket-open
+brankets creek is open! the holler and rope mill remain closed due to wet conditions,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+"blankets creek and rope mill are open, the berm work on the mill trails have been delayed.",both_open,weak-labeled:per-trail-explicit
+"all trails are open! blankets creek will be closed tomorrow, sat nov 22 for mga race.",both_open,weak-labeled:blanket-open
+blankets creek trails are open. rope mill trails are closed.​,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are open at blankets creek and rope mill.,both_open,weak-labeled:blanket-open
+all trails are open at blankets creek and rope mill parks. blankets creek will be closed sunday 12/19/2021 until noon for a private event.,both_open,weak-labeled:blanket-open
+"as a reminder, blankets creek will be closed on saturday, 3/16 until 11:30 am for a trail run race.",both_open,weak-labeled:subfeature-closure-default-open
+all trails are open please be on the look out for downed trees and limbs use caution on rock and roll trail due to fresh work,both_open,hand-labeled
+all trails are open except the holler and latrell’s yard at blankets and the mill at rope mill these trails need more time to dry out!,both_open,weak-labeled:blanket-open
+all trails are open at blankets creek and rope mill parks. turbine will be closed for maintenance starting tuesday feb 15.,both_open,weak-labeled:blanket-open
+the trails at blankets creek and rope mill park are closed due to wet conditions.,both_closed,weak-labeled:per-trail-explicit
+all trails are closed at blankets creek and rope mill parks due to wet conditions.,both_closed,weak-labeled:blanket-closed
+all trails are open except south loop,both_open,hand-labeled
+all trails closed due to freeze thaw,both_closed,weak-labeled:blanket-closed
+all trails are open. please note: rope mill will be closed saturday morning for the dirty duathlon race.,both_open,weak-labeled:blanket-open
+blankets creek closed for hunting! rope mill open!,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+rope mill is open. blankets creek is closed for repairs and will open later today.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+trails at blankets and rope mill are closed until around 1pm on sat. 10/26 for races.,both_closed,weak-labeled:per-trail-explicit
+blankets creek and rope mill trails are closed,both_closed,weak-labeled:per-trail-explicit
+blankets and rope mill trails are closed for freeze/thaw conditions.,both_closed,weak-labeled:per-trail-explicit
+all trails at rope mill and blankets creek are closed due to wet conditions.,both_closed,weak-labeled:per-trail-explicit
+just a reminder! blankets creek will be closed saturday november 23rd for the mga 3/6 hour race!!!,both_open,weak-labeled:subfeature-closure-default-open
+trails are closed at blankets creek and rope mill due to freeze/thaw conditions.,both_closed,weak-labeled:blanket-closed
+all other trails at blankets creek and rope mill are open. avalanche is undergoing improvements and may have sections closed.,both_open,weak-labeled:per-trail-explicit
+blankets creek is closed for race rope mill is open,blankets_closed_rope_open,hand-labeled
+all trails are open except for the holler.,both_open,weak-labeled:blanket-open
+trails at blankets creek and rope mill parks are open. the holler will be closed saturday may 8 until mid afternoon for maintenance.,both_open,weak-labeled:per-trail-explicit
+the trails at rope mill and blankets creek are open. vmt is closed.,both_open,weak-labeled:per-trail-explicit
+rope mill trails are open but will be closed sat 11/13 until noon for the dirty duathlon race. blankets creek is still closed.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+blankets creek is closed for a race until 10pm saturday 8/9 rope mill is open,blankets_closed_rope_open,hand-labeled
+"trails at blankets creek are open. trails at rope mill are open except the ""mill trails"", they are closed from 9:00am until 4:00pm, until the end of june, for trail maintenance.",both_open,weak-labeled:per-trail-explicit
+all trails are closed psa ! pedalpalooza has been rescheduled to oct 16,both_closed,hand-labeled
+trails at blankets creek are open. rope mill trails remain closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trails are open.,both_open,weak-labeled:blanket-open
+all trails are open except south loop.,both_open,weak-labeled:blanket-open
+trails are open - except for the mill (new trails),both_open,weak-labeled:blanket-open
+rope mill is open blankets creek is closed for repairs and will open later today,blankets_closed_rope_open,hand-labeled
+trails at rope mill will be closed until 1pm on 7/14 and until 2pm on 7/15 during the georgia games.,both_open,weak-labeled:subfeature-closure-default-open
+rope mill and blankets creek trails are closed due to wet conditions.,both_closed,weak-labeled:per-trail-explicit
+all trails at blankets creek and rope mill parks are closed due to wet conditions.,both_closed,weak-labeled:per-trail-explicit
+trails at blankets creek rope mill are closed.,both_closed,weak-labeled:per-trail-explicit
+blankets creek is closed 12/17 for hunting. rope mill remains open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails are closed due to wet & freeze thaw conditions.,both_closed,weak-labeled:blanket-closed
+"trails are open, van michael trail is closed",both_open,weak-labeled:blanket-open
+trails at rope mill and blankets creek are open (except for the holler),both_open,weak-labeled:per-trail-explicit
+merry christmas. all trails at blankets creek and rope mill are open.,both_open,weak-labeled:per-trail-explicit
+blankets creek is closed for the dirty 15/30 race! rope mill is open,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+trails are closed due to wet conditions - please allow time to let them dry out for the mg dirty duathlon race @ rope mill park sat am.,both_closed,weak-labeled:blanket-closed
+all trails are open at blankets creek and rope mill parks,both_open,hand-labeled
+trails at blankets creek and rope mill are open except the lower line of the holler trail.,both_open,weak-labeled:per-trail-explicit
+trails at blankets creek and rope mill are open. the mill trails at rope mill park will be closed starting tuesday oct 12 for maintenance.,both_open,weak-labeled:per-trail-explicit
+all trails at blankets creek and rope mill park are closed due to wet conditions.,both_closed,weak-labeled:per-trail-explicit
+blankets creek is open except for the holler. rope mill will remain closed until a full assessment is complete.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets creek is open and rope mill remains closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are open!the holler and lutrelle’s yard remain closed,both_open,weak-labeled:blanket-open
+trails are open! go ride!,both_open,weak-labeled:blanket-open
+"blankets creek is open on saturday, 4/20 for the race only. rope mill remains closed. we will make an assessment mid-day based on trail conditions.",blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails at blankets creek and rope mill are open. blankets will host a race on oct. 6th and will be closed to the public from 7am to 5pm.,both_open,weak-labeled:per-trail-explicit
+all trails are closed due to wet conditions!,both_closed,weak-labeled:blanket-closed
+trails are open at blankets creek and rope mill parks.,both_open,weak-labeled:blanket-open
+all trails are closed due to nasty conditions,both_closed,hand-labeled
+all trails are open except the mill,both_open,hand-labeled
+all trails at blankets creek and rope mill are closed.,both_closed,weak-labeled:per-trail-explicit
+"all trails open, except quehl holler",both_open,weak-labeled:blanket-open
+trails at blankets creek and rope mill are open. the holler will be closed saturday may 8 until mid afternoon.,both_open,weak-labeled:per-trail-explicit
+all trails are closed due to the wet conditions at blankets creek and rope mill,both_closed,hand-labeled
+trails are closed (gates might be open),both_closed,weak-labeled:blanket-closed
+all trails are open!!!,both_open,weak-labeled:blanket-open
+all trails are open except for the holler,both_open,hand-labeled
+all trail are open!,both_open,weak-labeled:blanket-open
+"blankets creek and rope mill are open, but vmt is closed due to heavy tree fall.",both_open,weak-labeled:per-trail-explicit
+trails closed.,both_closed,weak-labeled:blanket-closed
+"trails at rope mill and blankets creek are open except for the creek side of mosquito flats and the holler. fyi, the blankets creek bathrooms have been closed by the county.",both_open,weak-labeled:per-trail-explicit
+all trails are closed for freeze/thaw conditions,both_closed,hand-labeled
+"the trails at blankets creek and rope mill are open! blankets will be closed saturday april 3rd for a race, reopening by 5:00pm. rope mill will be open.",both_open,weak-labeled:per-trail-explicit
+trails at rope mill are open. blankets creek is closed due to current hunting activity.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails are closed due to wet conditions,both_closed,hand-labeled
+all trails at blankets creek and rope mill are open,both_open,weak-labeled:per-trail-explicit
+the trails at blankets creek are open except south loop and kevorkian pass on vmt. rope mill remains closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+explorer trail at rope mill will be closed mon - fri for trail work. all other trails at rope mill and blankets creek are open.,both_open,weak-labeled:per-trail-explicit
+the trails at blankets creek are open. rope mill is closed due to a tree down on power lines.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails at blankets creek are open except for the lower section of bites!! rope mill park remains closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets(qh is closed) &trmt trails are open.,blankets_closed_rope_open,weak-labeled:one-trail-explicit+baseline
+trails at rope mill are open. blankets creek is open except for the holler and mosquito flats (creekside).,both_open,weak-labeled:per-trail-explicit
+rope mill is open. blankets creek remains closed.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails are open blankets creek will be closed saturday june 3rd for the 6 hour race,both_open,hand-labeled
+the trails at blankets creek and rope mill are closed.,both_closed,weak-labeled:per-trail-explicit
+all trails open!,both_open,weak-labeled:blanket-open
+trails at rope mill and blankets creek parks are open.,both_open,weak-labeled:per-trail-explicit
+trails are open. come ride today before the deluge of rain this weekend!,both_open,weak-labeled:blanket-open
+all trails are closed due to freeze/thaw conditions,both_closed,hand-labeled
+we are no longer able to close gates at rope mill when the trails are closed. be sure to check the status here or the trail status hotline (678) 568-1508 before heading to the trails.,both_closed,weak-labeled:one-trail-explicit+baseline
+all trails open except explorer it remains closed for maintenance.,both_open,weak-labeled:blanket-open
+all trails at blankets creek and rope mill park are open.,both_open,weak-labeled:per-trail-explicit
+blankets creek trails are open. rope mill trails are closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trails will be closed until further notice due to flood damage,both_open,weak-labeled:subfeature-closure-default-open
+all trails are open except quehl holler.,both_open,weak-labeled:blanket-open
+trails are open!,both_open,weak-labeled:blanket-open
+trails are open except for mosquito bite @ blankets,both_open,weak-labeled:blanket-open
+all trails are open (5/6/2017),both_open,hand-labeled
+all trails are closed due to rainy conditions,both_closed,hand-labeled
+all trails are open. blankets creek will be closed for a race on saturday 9/5 until 4pm.,both_open,weak-labeled:blanket-open
+all trails are closed due to weather,both_closed,weak-labeled:blanket-closed
+trails are open but rope mill will be closed on sat (11/14) from 4am - 1pm for the dirty duathlon race.,both_open,weak-labeled:blanket-open
+trails at blankets creek and rope mill parks are open.,both_open,weak-labeled:per-trail-explicit
+all trails at blankets creek and rope mill are closed,both_closed,weak-labeled:per-trail-explicit
+the trails at blankets creek and rope mill are closed. blankets creek will be closed saturday 4/2 for a race.,both_closed,weak-labeled:per-trail-explicit
+all trails are blankets creek are open. all trails at rope mill except the mill are open.,both_open,weak-labeled:per-trail-explicit
+all trails are open except qh,both_open,hand-labeled
+trails are blankets creek and rope mill are closed due to recent rain.,both_closed,weak-labeled:per-trail-explicit
+blankets is closed. trmbt @ rope mill is open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails are open. bc will close at 6pm 11/9 and reopen at 1pm 11/10 for the bc 13.1 half marathon.,both_open,weak-labeled:blanket-open
+looks like we are headed into a long freeze period where we will be having more freezing hours than thaw hours. trails we be closed until at least 24 hours of continuous above freezing temps occur. we will check trails and report back then.,both_open,weak-labeled:subfeature-closure-default-open
+blankets creek is open. rope mill remains closed,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are closed at blankets creek and rope mill due to wet conditions,both_closed,hand-labeled
+all trails are open at blankets creek and rope mill,both_open,hand-labeled
+all trails are open at blankets creek and rope mill park,both_open,hand-labeled
+all trails are closed due to nasty conditions.,both_closed,weak-labeled:blanket-closed
+"south loop, vmt and the holler are open at blankets creek and rope mill remains closed.",both_closed,weak-labeled:per-trail-explicit
+all trails are open!!,both_open,weak-labeled:blanket-open
+blankets creek is open (except south loop). rope mill is closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets creek trails are open. quehl holler & rope mill remain closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trails are closed at blankets creek and rope mill parks due to freeze thaw conditions.,both_closed,weak-labeled:blanket-closed
+some advanced lines that have technical trail features (ttfs) are also closed on dwelling and vmt trails @ blankets.,both_open,weak-labeled:subfeature-closure-default-open
+blankets creek and rope mill trails are open. social ride and cookout saturday 12/11 @ blankets. ride at 11:00 food to follow. all are welcome!,both_open,weak-labeled:per-trail-explicit
+"rope mill and blankets creek are open. covid-19 update, the holler and other technical lines are closed.",both_open,weak-labeled:per-trail-explicit
+blankets creek is open. rope mill is closed for a race.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+rope mill remains closed. all trails are open at blankets creek but look out for a temporary reroute near kv pass on vmt.,blankets_open_rope_closed,weak-labeled:one-trail-explicit+baseline
+trails are closed do to wet conditions and possible storm damage. more details to follow.,both_closed,weak-labeled:blanket-closed
+all trails are closed due to inclement weather,both_closed,weak-labeled:blanket-closed
+trails are closed due to freeze/thaw conditions until further notice.,both_closed,weak-labeled:blanket-closed
+all trails at blankets creek are closed on sat. 8/4. all trails at rope mill are open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+trails are closed due to wet conditions,both_closed,weak-labeled:blanket-closed
+rope mill is open. blankets is closed all day 7/22 for a film production shooting.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails are open at rope mill and blankets creek. the holler is still under assessment.,both_open,weak-labeled:blanket-open
+the trails at blankets creek and rope mill are closed due to rain.,both_closed,weak-labeled:per-trail-explicit
+trails at rope mill and blankets creek are open except for the holler.,both_open,weak-labeled:per-trail-explicit
+all trails are closed. we will assess tomorrow afternoon.,both_closed,weak-labeled:blanket-closed
+quehl holler closed,both_open,weak-labeled:subfeature-closure-default-open
+all trails at blankets creek are open except for the holler and all trails at rope mill are open.,both_open,weak-labeled:per-trail-explicit
+rope mill is closed due to wet conditions. blankets creek is open except for the holler and mosquito flats (creekside).,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails open. south loop will be closed fri. jun 13th (tree removal),both_open,weak-labeled:blanket-open
+blankets creek is closed until 10pm saturday 8/9 rope mill is open,blankets_closed_rope_open,hand-labeled
+all trails are closed due to wet weather conditions.,both_closed,weak-labeled:blanket-closed
+all trails at blankets creek are open. rope mill is open except turbine.,both_open,weak-labeled:per-trail-explicit
+all trails are open. please be on the look out for downed trees and limbs. use caution on rock and roll trail due to fresh work.,both_open,weak-labeled:blanket-open
+trails are closed.,both_closed,weak-labeled:blanket-closed
+alll trails are open,both_open,weak-labeled:blanket-open
+all trails are open at blankets creek and rope mill blankets will be closed saturday april 2 for a race until early afternoon,both_open,hand-labeled
+all trails are open (except the holler).,both_open,weak-labeled:blanket-open
+all trails at rope mill are open. blankets creek trails are open except for the holler.,both_open,weak-labeled:per-trail-explicit
+"vmt is currently closed while new construction events are in progress. there are impassable sections of the trail! for your own safety and ours, please stay off until grand re-opening at pedalpalooza this sat, 5/5.",both_open,weak-labeled:subfeature-closure-default-open
+trails at blankets creek and rope mill are open. the alt line on raceway at the mill is closed for repairs.,both_open,weak-labeled:per-trail-explicit
+all trails at blankets creek and rope mill are open except the mill trail.,both_open,weak-labeled:per-trail-explicit
+trails are closed due to extensive flood damage.,both_closed,weak-labeled:blanket-closed
+trails are closed due to wet conditions.,both_closed,weak-labeled:blanket-closed
+blankets creek is closed for a race until 10pm saturday 8/9. rope mill is open,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+trails at blankets creek and rope mill are open except for the holler due to unsafe conditions.,both_open,weak-labeled:per-trail-explicit
+"all trails are open, blankets will be closed saturday 3/28 until noon.",both_open,weak-labeled:blanket-open
+trails are closed due to wet and freeze/thaw conditions,both_closed,weak-labeled:blanket-closed
+all trails at blankets creek and rope mill are open. thank you to all of our volunteers!,both_open,weak-labeled:per-trail-explicit
+blankets creek is closed for hunting! rope mill is open,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+trails are closed (freeze/thaw conditions),both_closed,weak-labeled:blanket-closed
+"the trails at blankets creek and rope mill are closed as a result of too much rain, again.",both_closed,weak-labeled:per-trail-explicit
+all trails are open kv pass on vmt is temporarily closed,both_open,hand-labeled
+blankets creek and rope mill are open except for south loop and the holler.,both_open,weak-labeled:per-trail-explicit
+all trails at rope mill are open. blankets creek trails are open.,both_open,weak-labeled:per-trail-explicit
+blankets creek open rope mill open,both_open,weak-labeled:per-trail-explicit
+all trails are closed due to wet weather.,both_closed,weak-labeled:blanket-closed
+rope mill and blankets creek trails are open except for hamilton’s hop between the two mosquito flat entrances.,both_open,weak-labeled:per-trail-explicit
+all trails closed due to wet conditions. south loop tree removal fri. jun 13th.,both_closed,weak-labeled:blanket-closed
+trails are open at blankets creek and rope mill trails.,both_open,weak-labeled:blanket-open
+the trails at blankets creek and rope mill are open.,both_open,weak-labeled:per-trail-explicit
+blankets creek is open rope mill remains closed,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+the trails at blankets creek and rope mill are open except the mill trails due to angry bees.,both_open,weak-labeled:per-trail-explicit
+blankets creek is open except for south loop. rope mill remains closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trails are blankets creek and rope mill are closed due to wet conditions.,both_closed,weak-labeled:per-trail-explicit
+blankets creek trails will be closed all day friday 4/19 for race prep and sat. 4/20 until 1pm for the dirty duathlon race. rope mill trails are open.​,both_open,weak-labeled:one-trail-explicit+baseline
+trails at blankets are closed. rope mill are open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails are open - except quehl holler,both_open,hand-labeled
+taylor randahl trails will be closed on 7/23 until 1pm and on 7/24 until 3pm for the georgia games.,both_open,weak-labeled:subfeature-closure-default-open
+"all trails are open, except mosquito bite",both_open,weak-labeled:blanket-open
+"all trails are open. race is done, go get it!",both_open,weak-labeled:blanket-open
+blankets creek is open. rope mill remains closed due to tree fall.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trails are closed due to freeze/thaw conditions.,both_closed,weak-labeled:blanket-closed
+all trails are closed we will assess tomorrow afternoon,both_closed,hand-labeled
+blankets creek is closed due to wet conditions,both_closed,hand-labeled
+"blankets creek is closed, rope mill is open.",blankets_closed_rope_open,weak-labeled:per-trail-explicit
+blankets creek is open! rope mill is closed,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trails at blankets creek and rope mill are open except for the holler and mosquito flats (creekside).,both_open,weak-labeled:per-trail-explicit
+all trails at blankets creek and rope mill are open!,both_open,weak-labeled:per-trail-explicit
+all trails are open. kv pass on vmt is temporarily closed.,both_open,weak-labeled:blanket-open
+the holler is closed due to wet conditions. all other trails are open.,both_open,weak-labeled:blanket-open
+all trails are open. note: blankets will be closed saturday oct 1 for a race until about 4-5 pm.,both_open,weak-labeled:blanket-open
+trails are open at blankets creek and rope mill except for the holler due to wet conditions.,both_open,weak-labeled:blanket-open
+all trails are closed for wet conditions,both_closed,hand-labeled
+"the trails at blankets creek and rope mill are open. wednesday morning dwelling, gnarnia and south loop will be closed until afternoon for tree removal.",both_open,weak-labeled:per-trail-explicit
+blankets and rope mill trails are closed for freeze/thaw conditions,both_closed,hand-labeled
+all trails at blankets creek are open. rope mill remains closed due to extensive storm damage.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trails at rope mill and blankets creek are open.,both_open,weak-labeled:per-trail-explicit
+"trails are open, vmt race cut is now open",both_open,weak-labeled:blanket-open
+all trails are closed due to freeze thaw conditions,both_closed,hand-labeled
+blankets creek is closed for race. rope mill is open.,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+all trails are closed due to wet weather conditions,both_closed,weak-labeled:blanket-closed
+blankets creek is open except for the holler and the west side of flats. rope mill park remains closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails at blankets creek are open. rope mill is closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets creek and rope mill are open.,both_open,weak-labeled:per-trail-explicit
+blankets creek is closed fri 4/8 and sat 4/9 for the dirty duathlon race trmt is open,both_closed,hand-labeled
+all trails at blankets creek and rope mill are open.,both_open,weak-labeled:per-trail-explicit
+blankets creek trails are closed until mid day sat. for the dirty duathlon race. taylor randahl trails are open.,blankets_closed_rope_open,weak-labeled:one-trail-explicit+baseline
+trails are closed until further notice.,both_closed,weak-labeled:blanket-closed
+trails are closed at blankets creek and rope mill,both_closed,weak-labeled:blanket-closed
+blankets creek is closed until 10pm saturday 8/9. rope mill is open,blankets_closed_rope_open,weak-labeled:per-trail-explicit
+blankets creek & rope mill open. the holler is closed,both_open,weak-labeled:per-trail-explicit
+all trails are closed due to wet conditions.,both_closed,weak-labeled:blanket-closed
+all trails are open. trails at rope mill will be closed on 7/14 and 7/15.,both_open,weak-labeled:blanket-open
+blankets creek is open except for the holler. rope mill remains closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets creek and taylor randahl memorial trails are closed.,both_closed,weak-labeled:one-trail-explicit+baseline
+"blankets creek is open, except the holler. rope mill is open",both_open,weak-labeled:per-trail-explicit
+all trails closed due to wet conditions.,both_closed,weak-labeled:blanket-closed
+blankets creek & rope mill trails are open. quehl holler is closed.,both_open,weak-labeled:per-trail-explicit
+trails are open. please use discretion if they are wet.,both_open,weak-labeled:blanket-open
+all trails are open yippie!!,both_open,hand-labeled
+blankets creek & rope mill trails are open. quehl holler will be closed for at least a few weeks.,both_open,weak-labeled:per-trail-explicit
+all trails are closed due to wet weather conditions. note: blankets creek will admit guests for the christmas party at 2 pm.,both_closed,weak-labeled:blanket-closed
+blankets creek and rope mill trails are closed.,both_closed,weak-labeled:per-trail-explicit
+blankets creek is open. rope mill trails are closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets creek is open. rope mill remains closed until it can be assessed,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+trails at blankets creek and rope mill are closed due to wet conditions.,both_closed,weak-labeled:per-trail-explicit
+trails are closed due to freeze/thaw conditions,both_closed,weak-labeled:blanket-closed
+"blankets creek: vmt, south loop, mosquito flat and bite are open, dwelling and the holler are closed ........ rope mill: explorer, avalanche and the mill trails are open",both_open,weak-labeled:blanket-open
+merry christmas. blankets creek is open except for the holler. rope mill remains closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+"all trails are open. rope mill will be closed saturday morning, june 10th for a race.",both_open,weak-labeled:blanket-open
+all trails are open! holler remains closed,both_open,weak-labeled:blanket-open
+"blankets creek and rope mill are open. blankets creek will be closed on saturday, 6/27 until 4pm for a race.",both_open,weak-labeled:per-trail-explicit
+rope mill is closed due to flooding blankets creek is closed due to wet conditions,both_closed,hand-labeled
+rope mill park is open. blankets creek is open (except for west side of mosquito flats),both_open,weak-labeled:per-trail-explicit
+all trails at blankets creek and rope mill parks are open.,both_open,weak-labeled:per-trail-explicit
+blankets creek is open. rope mill remains closed.,blankets_open_rope_closed,weak-labeled:per-trail-explicit
+blankets and rope mill are open the holler and pl jumps remain closed,both_open,weak-labeled:per-trail-explicit
+rope mill remains closed all trails are open at blankets creek but look out for a temporary reroute near kv pass on vmt,both_open,hand-labeled
+all trails are open blankets will be closed saturday 3/28 until noon,both_open,hand-labeled
+all trails are open at blankets creek and rope mill parks turbine will be closed for maintenance starting tuesday feb 15,both_open,hand-labeled
+the trails at rope mill and blankets creek are open,both_open,weak-labeled:per-trail-explicit
+rope mill trails are open. blankets creeks trails are open (except the holler and mosquito flats-creekside).,both_open,weak-labeled:per-trail-explicit
+all trails are open - new trails at rope mill are closed for final work on the entrance,both_open,hand-labeled
+"work party, 10/7 rope mill @9am. blankets is open except for the holler. rope mill is closed.",blankets_open_rope_closed,weak-labeled:per-trail-explicit
+"blankets creek bike trails are open for one day, sunday jan. 30th. the trails will be closed again after sunday (it's supposed to rain sunday night). taylor randahl trails are closed due to extensive damage created by riders ignoring the trail closure status.",both_open,weak-labeled:one-trail-explicit+baseline
+trails closed,both_closed,weak-labeled:blanket-closed
+all trails at rope mill and blankets creek are open.,both_open,weak-labeled:per-trail-explicit
+all trails are open!,both_open,hand-labeled
+"blankets open, rope mill closed for race until 10:30am",blankets_open_rope_closed,weak-labeled:per-trail-explicit
+all trails are open.,both_open,weak-labeled:blanket-open
+vmt and mosquito flats and bite are closed for the coach english trail run. south loop and dwelling are open. all rope mill trails open,both_open,weak-labeled:one-trail-explicit+baseline
+alltrails are closed due to wet conditions.,both_open,weak-labeled:subfeature-closure-default-open
+all trails are closed due to freeze-thaw conditions to prevent trail damage. we appreciate your cooperation.,both_closed,weak-labeled:blanket-closed
+"trails are open, except for quehl holler",both_open,weak-labeled:blanket-open
+all trails are open trails at rope mill will be closed on 7/14 and 7/15,both_open,hand-labeled
+all trails are open except van michael trail,both_open,hand-labeled
+blankets creek and rope mill are closed due to flooding. lake levels will have to drop significantly before we can open.,both_closed,weak-labeled:per-trail-explicit

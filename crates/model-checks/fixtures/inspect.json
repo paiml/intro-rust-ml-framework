@@ -1,0 +1,12 @@
+{
+  "file": "models/qwen2.5-0.5b-instruct.safetensors",
+  "format": "SafeTensors",
+  "file_size": 988097824,
+  "total_params": 494032768,
+  "architecture": "qwen2",
+  "quantization": "unknown",
+  "tensor_count": 290,
+  "metadata": {
+    "format": "pt"
+  }
+}

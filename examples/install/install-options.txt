@@ -1,0 +1,14 @@
+# Two ways to build apr yourself. Both compile on YOUR machine: several minutes.
+
+# A. From the git source, at the release tag
+git clone https://github.com/paiml/aprender
+cd aprender
+git checkout v0.71.4
+cargo install --path . --locked
+
+# B. From crates.io, the published release
+cargo install aprender --version 0.71.4 --locked
+
+# C. Prebuilt: download a finished binary, checksum it, done in seconds.
+#    This is the one we run next.
+curl -LsSf https://paiml.com/apr/install.sh | sh -s -- --version v0.71.4

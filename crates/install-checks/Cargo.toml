@@ -1,0 +1,21 @@
+[package]
+name = "install-checks"
+description = "Contract checkers for lessons 1.2.3, 1.2.4 and 1.2.5: install channels, an installed apr, a greedy model run"
+edition.workspace = true
+version.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde_json.workspace = true
+
+[[bin]]
+name = "install-options"
+path = "src/bin/install_options.rs"
+
+[[bin]]
+name = "verify-install"
+path = "src/bin/verify_install.rs"
+
+[[bin]]
+name = "run-check"
+path = "src/bin/run_check.rs"

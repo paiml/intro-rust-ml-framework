@@ -1,0 +1,30 @@
+[package]
+name = "model-checks"
+description = "Contract checkers for the apr model demos (2.2.x, 2.3.x): anatomy, quantization, the OpenAI-style API, serving"
+edition.workspace = true
+version.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+
+[[bin]]
+name = "anatomy-check"
+path = "src/bin/anatomy_check.rs"
+
+[[bin]]
+name = "quant-compare"
+path = "src/bin/quant_compare.rs"
+
+[[bin]]
+name = "chat-check"
+path = "src/bin/chat_check.rs"
+
+[[bin]]
+name = "serve-check"
+path = "src/bin/serve_check.rs"
+
+[[bin]]
+name = "metrics-delta"
+path = "src/bin/metrics_delta.rs"

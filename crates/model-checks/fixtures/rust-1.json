@@ -1,0 +1,1 @@
+{"id":"chatcmpl-q4k-1792068952178","object":"chat.completion","created":1792068952,"model":"qwen","choices":[{"index":0,"message":{"role":"assistant","content":"Rust is an open-source, statically typed, system programming language."},"finish_reason":"stop"}],"usage":{"prompt_tokens":33,"completion_tokens":14,"total_tokens":47}}

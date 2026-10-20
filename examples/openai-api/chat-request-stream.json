@@ -1,0 +1,10 @@
+{
+  "model": "qwen2.5-0.5b-instruct",
+  "messages": [
+    { "role": "system", "content": "You are a concise assistant." },
+    { "role": "user", "content": "In one sentence, what is Rust?" }
+  ],
+  "max_tokens": 48,
+  "temperature": 0,
+  "stream": true
+}

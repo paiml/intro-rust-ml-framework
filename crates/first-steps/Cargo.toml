@@ -1,0 +1,23 @@
+[package]
+name = "first-steps"
+description = "Lessons 1.3.3 and 1.3.4: the CLI versus the library, and a small application built on the library"
+edition.workspace = true
+version.workspace = true
+publish.workspace = true
+
+[dependencies]
+aprender.workspace = true
+regression = { path = "../regression" }
+serde_json.workspace = true
+
+[[bin]]
+name = "save-model"
+path = "src/bin/save_model.rs"
+
+[[bin]]
+name = "inspect-lib"
+path = "src/bin/inspect_lib.rs"
+
+[[bin]]
+name = "reopen-estimate"
+path = "src/bin/reopen_estimate.rs"

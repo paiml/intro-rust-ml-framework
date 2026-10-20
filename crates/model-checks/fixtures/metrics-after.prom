@@ -1,0 +1,33 @@
+# HELP realizar_requests_total Total number of requests
+# TYPE realizar_requests_total counter
+realizar_requests_total 11
+# HELP realizar_requests_successful Successful requests
+# TYPE realizar_requests_successful counter
+realizar_requests_successful 11
+# HELP realizar_requests_failed Failed requests
+# TYPE realizar_requests_failed counter
+realizar_requests_failed 0
+# HELP realizar_tokens_generated Total tokens generated
+# TYPE realizar_tokens_generated counter
+realizar_tokens_generated 219
+# HELP realizar_inference_time_seconds Total inference time
+# TYPE realizar_inference_time_seconds counter
+realizar_inference_time_seconds 7.466939
+# HELP realizar_requests_per_second Request rate
+# TYPE realizar_requests_per_second gauge
+realizar_requests_per_second 0.01
+# HELP realizar_tokens_per_second Token generation rate
+# TYPE realizar_tokens_per_second gauge
+realizar_tokens_per_second 0.15
+# HELP realizar_avg_latency_ms Average latency in milliseconds
+# TYPE realizar_avg_latency_ms gauge
+realizar_avg_latency_ms 678.81
+# HELP realizar_error_rate Error rate (0.0-1.0)
+# TYPE realizar_error_rate gauge
+realizar_error_rate 0.0000
+# HELP realizar_uptime_seconds Uptime in seconds
+# TYPE realizar_uptime_seconds counter
+realizar_uptime_seconds 1471
+# HELP realizar_streams_abandoned Streams stopped because the client went away
+# TYPE realizar_streams_abandoned counter
+realizar_streams_abandoned 1

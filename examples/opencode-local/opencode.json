@@ -1,0 +1,20 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "apr": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": { "baseURL": "http://127.0.0.1:8089/v1" },
+      "models": { "qwen2.5-0.5b-instruct": {} }
+    }
+  },
+  "model": "apr/qwen2.5-0.5b-instruct",
+  "small_model": "apr/qwen2.5-0.5b-instruct",
+  "agent": {
+    "ask": {
+      "prompt": "You are a concise assistant. Answer in one or two sentences.",
+      "tools": { "*": false }
+    }
+  },
+  "autoupdate": false,
+  "share": "disabled"
+}

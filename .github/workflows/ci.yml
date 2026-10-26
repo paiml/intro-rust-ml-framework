@@ -73,4 +73,4 @@ jobs:
     needs: [lint, rust, validate, coverage-report]
     steps:
       - name: All jobs passed
-        run: echo "gate: lint, rust, validate and coverage-report passed"
+        run: echo "gate - lint, rust, validate and coverage-report passed"

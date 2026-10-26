@@ -17,8 +17,12 @@ pub const VAL_PATH: &str = "data/trail-status/val.jsonl";
 pub const LABEL_MAP_PATH: &str = "data/trail-status/label_map.json";
 
 /// The label names, in label-index order. Checked against `label_map.json`.
-pub const LABELS: [&str; 4] =
-    ["both_open", "blankets_open_rope_closed", "blankets_closed_rope_open", "both_closed"];
+pub const LABELS: [&str; 4] = [
+    "both_open",
+    "blankets_open_rope_closed",
+    "blankets_closed_rope_open",
+    "both_closed",
+];
 
 /// One labelled status update.
 #[derive(Debug, Clone, PartialEq, Deserialize)]
@@ -56,9 +60,14 @@ pub fn parse_jsonl(text: &str) -> Result<Vec<Example>, String> {
         .enumerate()
         .filter(|(_, l)| !l.trim().is_empty())
         .map(|(i, line)| {
-            let ex: Example = serde_json::from_str(line).map_err(|e| format!("line {}: {e}", i + 1))?;
+            let ex: Example =
+                serde_json::from_str(line).map_err(|e| format!("line {}: {e}", i + 1))?;
             if ex.label >= LABELS.len() {
-                return Err(format!("line {}: label {} is outside 0..=3", i + 1, ex.label));
+                return Err(format!(
+                    "line {}: label {} is outside 0..=3",
+                    i + 1,
+                    ex.label
+                ));
             }
             Ok(ex)
         })
@@ -77,9 +86,10 @@ pub fn label_map() -> Result<Vec<String>, String> {
     struct LabelMap {
         labels: Vec<String>,
     }
-    let text =
-        std::fs::read_to_string(LABEL_MAP_PATH).map_err(|e| format!("read {LABEL_MAP_PATH}: {e}"))?;
-    let map: LabelMap = serde_json::from_str(&text).map_err(|e| format!("{LABEL_MAP_PATH}: {e}"))?;
+    let text = std::fs::read_to_string(LABEL_MAP_PATH)
+        .map_err(|e| format!("read {LABEL_MAP_PATH}: {e}"))?;
+    let map: LabelMap =
+        serde_json::from_str(&text).map_err(|e| format!("{LABEL_MAP_PATH}: {e}"))?;
     Ok(map.labels)
 }
 
@@ -121,6 +131,9 @@ mod tests {
 
     #[test]
     fn tokens_are_lowercased_whitespace_splits() {
-        assert_eq!(tokens("Blankets  Creek is OPEN."), vec!["blankets", "creek", "is", "open."]);
+        assert_eq!(
+            tokens("Blankets  Creek is OPEN."),
+            vec!["blankets", "creek", "is", "open."]
+        );
     }
 }

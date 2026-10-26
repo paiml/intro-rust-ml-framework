@@ -33,21 +33,37 @@ fn main() {
 
     // Step 1: fit TF-IDF and both classifiers on the training rows only.
     let model = TrailStatusBundle::train(&train).expect("train");
-    println!("vocabulary: {} terms (1- and 2-grams seen in at least 2 rows)", model.vocabulary.len());
+    println!(
+        "vocabulary: {} terms (1- and 2-grams seen in at least 2 rows)",
+        model.vocabulary.len()
+    );
 
     // Step 2: score on the validation rows.
     let texts: Vec<&str> = val.iter().map(|r| r.text.as_str()).collect();
     let preds = model.predict_many(&texts);
     let (gold_b, gold_r) = targets(&val);
-    let pred_b: Vec<usize> = preds.iter().map(|p| usize::from(p.blankets_creek_open)).collect();
-    let pred_r: Vec<usize> = preds.iter().map(|p| usize::from(p.rope_mill_open)).collect();
+    let pred_b: Vec<usize> = preds
+        .iter()
+        .map(|p| usize::from(p.blankets_creek_open))
+        .collect();
+    let pred_r: Vec<usize> = preds
+        .iter()
+        .map(|p| usize::from(p.rope_mill_open))
+        .collect();
     let acc_b = accuracy(&pred_b, &gold_b);
     let acc_r = accuracy(&pred_r, &gold_r);
-    let exact = (0..val.len()).filter(|&i| pred_b[i] == gold_b[i] && pred_r[i] == gold_r[i]).count();
-    println!("val accuracy   Blankets Creek {acc_b:.3}   Rope Mill {acc_r:.3}   both right {exact}/{}", val.len());
+    let exact = (0..val.len())
+        .filter(|&i| pred_b[i] == gold_b[i] && pred_r[i] == gold_r[i])
+        .count();
+    println!(
+        "val accuracy   Blankets Creek {acc_b:.3}   Rope Mill {acc_r:.3}   both right {exact}/{}",
+        val.len()
+    );
 
     // Step 3: save ONE file: vocabulary, IDF weights and both classifiers.
-    let out = std::env::args().nth(1).unwrap_or_else(|| MODEL_PATH.to_string());
+    let out = std::env::args()
+        .nth(1)
+        .unwrap_or_else(|| MODEL_PATH.to_string());
     model.save(&out).expect("save");
     let bytes = std::fs::read(&out).expect("read back");
     println!("saved {out} ({} bytes)", bytes.len());
@@ -57,7 +73,10 @@ fn main() {
     let reloaded = TrailStatusBundle::from_bytes(&bytes).expect("reload");
     let again = reloaded.predict_many(&texts);
     let same = preds.iter().zip(&again).filter(|(a, b)| a == b).count();
-    println!("reloaded from disk: {same}/{} validation predictions identical", val.len());
+    println!(
+        "reloaded from disk: {same}/{} validation predictions identical",
+        val.len()
+    );
 
     // The inference-time TF-IDF must equal the library's, or the model sees different numbers than it trained on.
     let mut vectorizer = new_vectorizer();
@@ -65,12 +84,27 @@ fn main() {
     vectorizer.fit_transform(&train_texts).expect("fit");
     let library = to_f32(&vectorizer.transform(&texts).expect("transform"));
     let hand = model.features(&texts);
-    let max_diff = library.as_slice().iter().zip(hand.as_slice()).map(|(a, b)| (a - b).abs()).fold(0.0_f32, f32::max);
+    let max_diff = library
+        .as_slice()
+        .iter()
+        .zip(hand.as_slice())
+        .map(|(a, b)| (a - b).abs())
+        .fold(0.0_f32, f32::max);
 
-    assert_eq!(same, val.len(), "the reloaded file must predict what was saved");
+    assert_eq!(
+        same,
+        val.len(),
+        "the reloaded file must predict what was saved"
+    );
     assert_eq!(library.shape(), hand.shape(), "same feature shape");
-    assert!(max_diff < 1e-6, "TF-IDF differs from the library by {max_diff}");
-    assert!(acc_b.min(acc_r) >= ACCURACY_FLOOR, "accuracy below {ACCURACY_FLOOR}");
+    assert!(
+        max_diff < 1e-6,
+        "TF-IDF differs from the library by {max_diff}"
+    );
+    assert!(
+        acc_b.min(acc_r) >= ACCURACY_FLOOR,
+        "accuracy below {ACCURACY_FLOOR}"
+    );
     println!(
         "contract: the saved file is the model ({same}/{} identical after reload, TF-IDF matches the library, accuracy >= {ACCURACY_FLOOR}) OK",
         val.len()

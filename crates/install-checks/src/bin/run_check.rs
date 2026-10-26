@@ -15,14 +15,27 @@ const PROMPT: &str = "What is 2+2? Answer with just the number.";
 fn ask(model: &str) -> String {
     let out = run(
         "apr",
-        &["run", model, "-p", PROMPT, "-n", "8", "--chat", "--temperature", "0", "--no-gpu"],
+        &[
+            "run",
+            model,
+            "-p",
+            PROMPT,
+            "-n",
+            "8",
+            "--chat",
+            "--temperature",
+            "0",
+            "--no-gpu",
+        ],
     )
     .expect("apr run");
     run_answer(&out).expect("apr run printed an answer")
 }
 
 fn main() {
-    let model = std::env::args().nth(1).unwrap_or_else(|| DEFAULT_MODEL.to_string());
+    let model = std::env::args()
+        .nth(1)
+        .unwrap_or_else(|| DEFAULT_MODEL.to_string());
     println!("prompt:  {PROMPT:?}  (temperature 0, run twice)");
     let first = ask(&model);
     let second = ask(&model);
@@ -30,6 +43,9 @@ fn main() {
     println!("run 2:   {second:?}");
 
     assert_eq!(first, second, "greedy decoding must repeat itself exactly");
-    assert!(first.contains('4'), "2+2 must come back as 4, got {first:?}");
+    assert!(
+        first.contains('4'),
+        "2+2 must come back as 4, got {first:?}"
+    );
     println!("contract: greedy decoding is deterministic (same prompt, identical answer, and it is 4) OK");
 }

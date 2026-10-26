@@ -21,14 +21,19 @@ fn parse_args(args: &[String]) -> Result<(f32, f32), String> {
     let mut it = args.iter();
     while let Some(flag) = it.next() {
         let value = it.next().ok_or(format!("{flag} needs a value"))?;
-        let number: f32 = value.parse().map_err(|_| format!("{flag}: {value:?} is not a number"))?;
+        let number: f32 = value
+            .parse()
+            .map_err(|_| format!("{flag}: {value:?} is not a number"))?;
         match flag.as_str() {
             "--rain" => rain = Some(number),
             "--sun" => sun = Some(number),
             other => return Err(format!("unknown flag {other}")),
         }
     }
-    Ok((rain.ok_or("missing --rain <mm>")?, sun.ok_or("missing --sun <hours>")?))
+    Ok((
+        rain.ok_or("missing --rain <mm>")?,
+        sun.ok_or("missing --sun <hours>")?,
+    ))
 }
 
 /// Keep a parsed `(rain, sun)` only if the model was trained on inputs like it.
@@ -63,9 +68,17 @@ fn main() -> ExitCode {
 
     // Step 4: the contract. The app checks its answer before you see it.
     let formula = by_formula(&model, rain, sun);
-    assert!((hours - formula).abs() < 1e-3, "estimate must be the model's formula");
-    assert!(estimate(&model, rain + 1.0, sun) > hours, "more rain must reopen later");
-    println!("contract: trustworthy answer (the saved model's formula; more rain, never sooner) OK");
+    assert!(
+        (hours - formula).abs() < 1e-3,
+        "estimate must be the model's formula"
+    );
+    assert!(
+        estimate(&model, rain + 1.0, sun) > hours,
+        "more rain must reopen later"
+    );
+    println!(
+        "contract: trustworthy answer (the saved model's formula; more rain, never sooner) OK"
+    );
     ExitCode::SUCCESS
 }
 
@@ -79,7 +92,10 @@ mod tests {
 
     #[test]
     fn reads_both_flags_in_any_order() {
-        assert_eq!(parse_args(&args(&["--sun", "4", "--rain", "20"])), Ok((20.0, 4.0)));
+        assert_eq!(
+            parse_args(&args(&["--sun", "4", "--rain", "20"])),
+            Ok((20.0, 4.0))
+        );
     }
 
     #[test]

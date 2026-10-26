@@ -50,9 +50,12 @@ fn docs(addr: &str) -> String {
 }
 
 fn json(status: u16, body: String) -> Reply {
-    let header = Header::from_bytes(&b"Content-Type"[..], &b"application/json"[..]).expect("static header");
+    let header =
+        Header::from_bytes(&b"Content-Type"[..], &b"application/json"[..]).expect("static header");
     // A final newline, so a terminal prompt starts on its own line after `curl`.
-    Response::from_string(body + "\n").with_status_code(status).with_header(header)
+    Response::from_string(body + "\n")
+        .with_status_code(status)
+        .with_header(header)
 }
 
 fn error(status: u16, message: &str) -> Reply {
@@ -70,7 +73,10 @@ fn handle(model: &TrailStatusModel, addr: &str, request: &mut Request) -> Reply 
             }
             match serde_json::from_str::<PredictRequest>(&body) {
                 Ok(r) if r.text.trim().is_empty() => error(400, "text is empty"),
-                Ok(r) => json(200, serde_json::to_string(&model.predict(&r.text)).expect("serialize")),
+                Ok(r) => json(
+                    200,
+                    serde_json::to_string(&model.predict(&r.text)).expect("serialize"),
+                ),
                 Err(e) => error(400, &format!("invalid request: {e}")),
             }
         }
@@ -82,7 +88,11 @@ fn handle(model: &TrailStatusModel, addr: &str, request: &mut Request) -> Reply 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     let flag = |name: &str, default: &str| {
-        args.iter().position(|a| a == name).and_then(|i| args.get(i + 1)).cloned().unwrap_or_else(|| default.to_string())
+        args.iter()
+            .position(|a| a == name)
+            .and_then(|i| args.get(i + 1))
+            .cloned()
+            .unwrap_or_else(|| default.to_string())
     };
     let addr = format!("{}:{}", flag("--host", "127.0.0.1"), flag("--port", "8080"));
 
@@ -96,7 +106,10 @@ fn main() {
     for mut request in server.incoming_requests() {
         let response = handle(&model, &addr, &mut request);
         let status = response.status_code().0;
-        assert!([200, 400, 404, 405].contains(&status), "undocumented status {status}");
+        assert!(
+            [200, 400, 404, 405].contains(&status),
+            "undocumented status {status}"
+        );
         println!("{} {} -> {status}", request.method(), request.url());
         let _ = request.respond(response);
     }

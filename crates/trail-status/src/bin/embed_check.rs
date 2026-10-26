@@ -15,12 +15,17 @@ use trail_status::{sha256_hex, MODEL_PATH};
 fn main() {
     let embedded = sha256_hex(MODEL_BYTES);
     let on_disk = sha256_hex(&std::fs::read(MODEL_PATH).expect("the model file"));
-    println!("model embedded in this program: {} bytes", MODEL_BYTES.len());
+    println!(
+        "model embedded in this program: {} bytes",
+        MODEL_BYTES.len()
+    );
     println!("embedded   sha256 {embedded}");
     println!("model file sha256 {on_disk}");
 
     // Copy the CLI into an empty directory and run it there.
-    let cli = std::env::current_exe().expect("own path").with_file_name("trail-status-cli");
+    let cli = std::env::current_exe()
+        .expect("own path")
+        .with_file_name("trail-status-cli");
     let empty = std::env::temp_dir().join(format!("embed-check-{}", std::process::id()));
     std::fs::create_dir_all(&empty).expect("make empty dir");
     let copy = empty.join("trail-status-cli");
@@ -36,8 +41,14 @@ fn main() {
     println!("copied the CLI alone into an empty directory ({entries} file) and ran it:");
     print!("{stdout}");
 
-    assert_eq!(embedded, on_disk, "the embedded model must be the model file's exact bytes");
+    assert_eq!(
+        embedded, on_disk,
+        "the embedded model must be the model file's exact bytes"
+    );
     assert_eq!(entries, 1, "the directory must hold nothing but the binary");
-    assert!(out.status.success() && stdout.contains("Blankets Creek:"), "the copy must answer on its own");
+    assert!(
+        out.status.success() && stdout.contains("Blankets Creek:"),
+        "the copy must answer on its own"
+    );
     println!("contract: the bytes travel with the binary (sha256 embedded == file, answers with no model file present) OK");
 }

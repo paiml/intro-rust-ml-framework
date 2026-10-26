@@ -26,8 +26,14 @@ fn run(bin_path: &str) -> String {
 #[test]
 fn committed_dataset_matches_the_generator() {
     let on_disk = std::fs::read_to_string(workspace_root().join(regression::DATA_PATH)).unwrap();
-    let fresh = regression::to_csv(&regression::generate(regression::N_ROWS, regression::DATA_SEED));
-    assert_eq!(on_disk, fresh, "data/reopen-hours.csv drifted from the generator");
+    let fresh = regression::to_csv(&regression::generate(
+        regression::N_ROWS,
+        regression::DATA_SEED,
+    ));
+    assert_eq!(
+        on_disk, fresh,
+        "data/reopen-hours.csv drifted from the generator"
+    );
 }
 
 #[test]
@@ -43,5 +49,8 @@ fn estimators_contract_holds() {
     for name in ["LinearRegression", "Ridge", "Lasso"] {
         assert!(out.contains(name), "{name} missing from:\n{out}");
     }
-    assert!(out.contains("contract: one interface, one behaviour"), "{out}");
+    assert!(
+        out.contains("contract: one interface, one behaviour"),
+        "{out}"
+    );
 }

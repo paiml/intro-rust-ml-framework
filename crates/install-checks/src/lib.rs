@@ -56,14 +56,22 @@ pub fn strip_ansi(text: &str) -> String {
 
 /// The `version:` line of `cargo info`.
 pub fn cargo_info_version(text: &str) -> Option<&str> {
-    text.lines().find_map(|l| l.trim().strip_prefix("version: ")).map(str::trim)
+    text.lines()
+        .find_map(|l| l.trim().strip_prefix("version: "))
+        .map(str::trim)
 }
 
 /// Asset names in a GitHub release JSON document.
 pub fn release_asset_names(json: &str) -> Result<Vec<String>, String> {
-    let v: serde_json::Value = serde_json::from_str(json).map_err(|e| format!("release JSON: {e}"))?;
-    let assets = v["assets"].as_array().ok_or("release JSON has no assets array")?;
-    Ok(assets.iter().filter_map(|a| a["name"].as_str().map(str::to_string)).collect())
+    let v: serde_json::Value =
+        serde_json::from_str(json).map_err(|e| format!("release JSON: {e}"))?;
+    let assets = v["assets"]
+        .as_array()
+        .ok_or("release JSON has no assets array")?;
+    Ok(assets
+        .iter()
+        .filter_map(|a| a["name"].as_str().map(str::to_string))
+        .collect())
 }
 
 /// The prebuilt archive `install.sh` downloads for a version, target and variant.
@@ -73,7 +81,9 @@ pub fn archive_name(version: &str, target: &str, variant: &str) -> String {
 
 /// `"apr 0.71.4 (5027da624)"` -> `"0.71.4"`.
 pub fn apr_version(text: &str) -> Option<&str> {
-    text.lines().find_map(|l| l.trim().strip_prefix("apr ")).and_then(|rest| rest.split_whitespace().next())
+    text.lines()
+        .find_map(|l| l.trim().strip_prefix("apr "))
+        .and_then(|rest| rest.split_whitespace().next())
 }
 
 /// Commands from `apr --help`'s `Commands:` section.
@@ -92,16 +102,23 @@ pub fn help_commands(help: &str) -> Vec<String> {
 pub fn run_answer(text: &str) -> Option<String> {
     let mut lines = text.lines().skip_while(|l| l.trim() != "Output:");
     lines.next()?;
-    let answer: Vec<&str> = lines.take_while(|l| !l.trim().is_empty() && !l.starts_with("Completed in")).collect();
+    let answer: Vec<&str> = lines
+        .take_while(|l| !l.trim().is_empty() && !l.starts_with("Completed in"))
+        .collect();
     (!answer.is_empty()).then(|| answer.join("\n").trim().to_string())
 }
 
 /// The first executable named `name` on a `PATH` string, as `which` finds it.
 pub fn first_on_path(name: &str, path_var: &str) -> Option<PathBuf> {
-    path_var.split(':').filter(|d| !d.is_empty()).map(|d| Path::new(d).join(name)).find(|p| {
-        use std::os::unix::fs::PermissionsExt;
-        p.metadata().is_ok_and(|m| m.is_file() && m.permissions().mode() & 0o111 != 0)
-    })
+    path_var
+        .split(':')
+        .filter(|d| !d.is_empty())
+        .map(|d| Path::new(d).join(name))
+        .find(|p| {
+            use std::os::unix::fs::PermissionsExt;
+            p.metadata()
+                .is_ok_and(|m| m.is_file() && m.permissions().mode() & 0o111 != 0)
+        })
 }
 
 #[cfg(test)]
@@ -110,7 +127,10 @@ mod tests {
 
     #[test]
     fn strips_ansi_colors() {
-        assert_eq!(strip_ansi("\u{1b}[1m\u{1b}[32mversion:\u{1b}[0m 0.71.4"), "version: 0.71.4");
+        assert_eq!(
+            strip_ansi("\u{1b}[1m\u{1b}[32mversion:\u{1b}[0m 0.71.4"),
+            "version: 0.71.4"
+        );
         assert_eq!(strip_ansi("plain"), "plain");
     }
 
@@ -129,8 +149,12 @@ mod tests {
 
     #[test]
     fn reads_release_asset_names() {
-        let json = r#"{"tag_name":"v0.71.4","assets":[{"name":"a.tar.gz"},{"name":"a.tar.gz.sha256"}]}"#;
-        assert_eq!(release_asset_names(json).unwrap(), vec!["a.tar.gz", "a.tar.gz.sha256"]);
+        let json =
+            r#"{"tag_name":"v0.71.4","assets":[{"name":"a.tar.gz"},{"name":"a.tar.gz.sha256"}]}"#;
+        assert_eq!(
+            release_asset_names(json).unwrap(),
+            vec!["a.tar.gz", "a.tar.gz.sha256"]
+        );
         assert!(release_asset_names("{}").is_err());
         assert!(release_asset_names("not json").is_err());
     }
@@ -169,6 +193,9 @@ mod tests {
     #[test]
     fn finds_the_first_executable_on_path() {
         assert!(first_on_path("sh", "/nonexistent:/bin:/usr/bin").is_some());
-        assert_eq!(first_on_path("definitely-not-a-command-xyz", "/bin:/usr/bin"), None);
+        assert_eq!(
+            first_on_path("definitely-not-a-command-xyz", "/bin:/usr/bin"),
+            None
+        );
     }
 }

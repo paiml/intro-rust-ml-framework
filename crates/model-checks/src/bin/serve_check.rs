@@ -28,6 +28,9 @@ fn main() {
 
     assert!(!a.content.is_empty(), "empty answer");
     assert_eq!(a.content, b.content, "same request, different answers");
-    assert_eq!(streamed, a.content, "stream does not join up to the plain answer");
+    assert_eq!(
+        streamed, a.content,
+        "stream does not join up to the plain answer"
+    );
     println!("contract: greedy determinism (same request -> same answer; stream joins to it) OK");
 }

@@ -58,10 +58,14 @@ pub fn by_formula(model: &LinearRegression, rainfall_mm: f32, sun_hours: f32) ->
 /// Validate one input. The app refuses what the training data never covered.
 pub fn check_inputs(rainfall_mm: f32, sun_hours: f32) -> Result<(), String> {
     if !rainfall_mm.is_finite() || !(0.0..=40.0).contains(&rainfall_mm) {
-        return Err(format!("rain must be between 0 and 40 mm (the data's range), got {rainfall_mm}"));
+        return Err(format!(
+            "rain must be between 0 and 40 mm (the data's range), got {rainfall_mm}"
+        ));
     }
     if !sun_hours.is_finite() || !(0.0..=10.0).contains(&sun_hours) {
-        return Err(format!("sun must be between 0 and 10 hours (the data's range), got {sun_hours}"));
+        return Err(format!(
+            "sun must be between 0 and 10 hours (the data's range), got {sun_hours}"
+        ));
     }
     Ok(())
 }
@@ -96,7 +100,10 @@ mod tests {
     fn save_then_load_round_trips() {
         workspace_root();
         let m = train().unwrap();
-        let path = std::env::temp_dir().join(format!("reopen-roundtrip-{}.safetensors", std::process::id()));
+        let path = std::env::temp_dir().join(format!(
+            "reopen-roundtrip-{}.safetensors",
+            std::process::id()
+        ));
         let path = path.to_str().unwrap();
         save(&m, path).unwrap();
         let back = load(path).unwrap();

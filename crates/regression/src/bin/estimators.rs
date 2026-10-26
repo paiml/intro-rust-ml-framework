@@ -29,10 +29,20 @@ fn evaluate<E: Estimator>(
     // Step 3: score reports R² on the test rows.
     let score = model.score(test.0, test.1);
     let by_hand = r_squared(&predictions, test.1);
-    println!("{name:<18} test R² {score:.4}   first prediction {:.1} h", predictions.as_slice()[0]);
+    println!(
+        "{name:<18} test R² {score:.4}   first prediction {:.1} h",
+        predictions.as_slice()[0]
+    );
 
-    assert_eq!(predictions.len(), test.0.shape().0, "{name}: one prediction per row");
-    assert!((score - by_hand).abs() < 1e-5, "{name}: score() must equal R² of predict()");
+    assert_eq!(
+        predictions.len(),
+        test.0.shape().0,
+        "{name}: one prediction per row"
+    );
+    assert!(
+        (score - by_hand).abs() < 1e-5,
+        "{name}: score() must equal R² of predict()"
+    );
     score
 }
 
@@ -50,6 +60,9 @@ fn main() {
         evaluate("Lasso(alpha=0.1)", Lasso::new(0.1), train, test),
     ];
 
-    assert!(scores.iter().all(|s| s.is_finite()), "every estimator produced a finite score");
+    assert!(
+        scores.iter().all(|s| s.is_finite()),
+        "every estimator produced a finite score"
+    );
     println!("contract: one interface, one behaviour (3 estimators: len(predict) == rows, score == R²(predict)) OK");
 }

@@ -29,7 +29,14 @@ fn main() {
     assert_eq!(c.object, "chat.completion");
     assert_eq!(c.role, "assistant");
     assert!(!c.content.trim().is_empty(), "the assistant said nothing");
-    assert!(matches!(c.finish_reason.as_str(), "stop" | "length"), "unexpected finish_reason");
-    assert_eq!(c.total_tokens, c.prompt_tokens + c.completion_tokens, "token accounting");
+    assert!(
+        matches!(c.finish_reason.as_str(), "stop" | "length"),
+        "unexpected finish_reason"
+    );
+    assert_eq!(
+        c.total_tokens,
+        c.prompt_tokens + c.completion_tokens,
+        "token accounting"
+    );
     println!("contract: OpenAI response shape (assistant message, finish_reason, total = prompt + completion) OK");
 }

@@ -16,6 +16,9 @@ fn main() {
     let again = to_csv(&generate(N_ROWS, DATA_SEED));
     let on_disk = std::fs::read_to_string(DATA_PATH).expect("read back");
     assert_eq!(csv, again, "same seed must give the same data");
-    assert_eq!(csv, on_disk, "the file must hold exactly what was generated");
+    assert_eq!(
+        csv, on_disk,
+        "the file must hold exactly what was generated"
+    );
     println!("contract: determinism (same seed => byte-identical CSV) OK");
 }

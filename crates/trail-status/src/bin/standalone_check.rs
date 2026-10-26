@@ -21,8 +21,12 @@ struct MovedAway {
 impl MovedAway {
     fn new(path: &Path) -> Self {
         let aside = path.with_extension("apr.away");
-        std::fs::rename(path, &aside).unwrap_or_else(|e| panic!("move {} aside: {e}", path.display()));
-        Self { original: path.to_path_buf(), aside }
+        std::fs::rename(path, &aside)
+            .unwrap_or_else(|e| panic!("move {} aside: {e}", path.display()));
+        Self {
+            original: path.to_path_buf(),
+            aside,
+        }
     }
 }
 
@@ -40,13 +44,22 @@ fn main() {
         eprintln!("usage: standalone-check <compiled-program> <model.apr>");
         std::process::exit(2);
     };
-    let program = Path::new(program).canonicalize().expect("the compiled program");
+    let program = Path::new(program)
+        .canonicalize()
+        .expect("the compiled program");
     let model = Path::new(model);
 
     let answer = {
         let _guard = MovedAway::new(model);
-        println!("moved {} away; it exists now: {}", model.display(), model.exists());
-        assert!(!model.exists(), "the model file must be gone during the run");
+        println!(
+            "moved {} away; it exists now: {}",
+            model.display(),
+            model.exists()
+        );
+        assert!(
+            !model.exists(),
+            "the model file must be gone during the run"
+        );
         let out = Command::new(&program)
             .args(["-p", QUESTION, "-n", "16", "--no-gpu"])
             .output()
@@ -60,5 +73,7 @@ fn main() {
 
     assert!(answer.contains('4'), "the compiled program must answer 4");
     assert!(model.exists(), "the model file must be restored");
-    println!("contract: the model travels inside the program (answered 4 with its .apr moved away) OK");
+    println!(
+        "contract: the model travels inside the program (answered 4 with its .apr moved away) OK"
+    );
 }

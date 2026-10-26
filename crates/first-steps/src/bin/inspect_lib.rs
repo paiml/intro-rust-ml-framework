@@ -18,15 +18,25 @@ fn cli_tensors(path: &str) -> Vec<(String, Vec<usize>)> {
         .args(["tensors", "--json", path])
         .output()
         .expect("run `apr tensors`");
-    assert!(out.status.success(), "apr tensors failed: {}", String::from_utf8_lossy(&out.stderr));
-    let json: serde_json::Value = serde_json::from_slice(&out.stdout).expect("apr tensors --json is JSON");
+    assert!(
+        out.status.success(),
+        "apr tensors failed: {}",
+        String::from_utf8_lossy(&out.stderr)
+    );
+    let json: serde_json::Value =
+        serde_json::from_slice(&out.stdout).expect("apr tensors --json is JSON");
     json["tensors"]
         .as_array()
         .expect("a tensors array")
         .iter()
         .map(|t| {
             let name = t["name"].as_str().expect("name").to_string();
-            let shape = t["shape"].as_array().expect("shape").iter().map(|d| d.as_u64().unwrap() as usize).collect();
+            let shape = t["shape"]
+                .as_array()
+                .expect("shape")
+                .iter()
+                .map(|d| d.as_u64().unwrap() as usize)
+                .collect();
             (name, shape)
         })
         .collect()
@@ -37,7 +47,10 @@ fn main() {
     let model = load(MODEL_PATH).expect("load (run `save-model` first)");
     let coefficients = model.coefficients().as_slice();
     println!("library: loaded a LinearRegression from {MODEL_PATH}");
-    println!("         coefficients {coefficients:?}, intercept {:.4}", model.intercept());
+    println!(
+        "         coefficients {coefficients:?}, intercept {:.4}",
+        model.intercept()
+    );
     let library_tensors = vec![
         ("coefficients".to_string(), vec![coefficients.len()]),
         ("intercept".to_string(), vec![1]),
@@ -54,8 +67,18 @@ fn main() {
     println!("predict: 20 mm of rain, 4 sun hours -> {hours:.1} hours until reopen");
 
     // Step 4: the contract. Both views must agree.
-    assert_eq!(cli, library_tensors, "CLI and library must see the same tensors");
-    assert_eq!(params, coefficients.len() + 1, "parameter counts must agree");
-    assert!((hours - formula).abs() < 1e-3, "predict must follow the formula");
+    assert_eq!(
+        cli, library_tensors,
+        "CLI and library must see the same tensors"
+    );
+    assert_eq!(
+        params,
+        coefficients.len() + 1,
+        "parameter counts must agree"
+    );
+    assert!(
+        (hours - formula).abs() < 1e-3,
+        "predict must follow the formula"
+    );
     println!("contract: one file, one model (CLI and library agree on {params} parameters in {} tensors) OK", cli.len());
 }

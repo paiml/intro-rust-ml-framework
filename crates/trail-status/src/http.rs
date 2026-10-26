@@ -14,16 +14,25 @@ pub struct Response {
 }
 
 /// Send one request to `addr` (e.g. `127.0.0.1:8080`).
-pub fn request(addr: &str, method: &str, path: &str, body: Option<&str>) -> Result<Response, String> {
+pub fn request(
+    addr: &str,
+    method: &str,
+    path: &str,
+    body: Option<&str>,
+) -> Result<Response, String> {
     let mut stream = TcpStream::connect(addr).map_err(|e| format!("connect {addr}: {e}"))?;
-    stream.set_read_timeout(Some(Duration::from_secs(10))).map_err(|e| e.to_string())?;
+    stream
+        .set_read_timeout(Some(Duration::from_secs(10)))
+        .map_err(|e| e.to_string())?;
     let body = body.unwrap_or("");
     let req = format!(
         "{method} {path} HTTP/1.1\r\nHost: {addr}\r\nContent-Type: application/json\r\n\
          Content-Length: {}\r\nConnection: close\r\n\r\n{body}",
         body.len()
     );
-    stream.write_all(req.as_bytes()).map_err(|e| e.to_string())?;
+    stream
+        .write_all(req.as_bytes())
+        .map_err(|e| e.to_string())?;
     let mut raw = String::new();
     stream.read_to_string(&mut raw).map_err(|e| e.to_string())?;
     parse_response(&raw)
@@ -35,7 +44,10 @@ fn parse_response(raw: &str) -> Result<Response, String> {
         .nth(1)
         .and_then(|s| s.parse().ok())
         .ok_or_else(|| format!("no status line in {raw:?}"))?;
-    let body = raw.split_once("\r\n\r\n").map(|(_, b)| b.to_string()).unwrap_or_default();
+    let body = raw
+        .split_once("\r\n\r\n")
+        .map(|(_, b)| b.to_string())
+        .unwrap_or_default();
     Ok(Response { status, body })
 }
 

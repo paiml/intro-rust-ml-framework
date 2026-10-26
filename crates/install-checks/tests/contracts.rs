@@ -15,7 +15,10 @@ fn workspace_root() -> PathBuf {
 }
 
 fn not_run(why: &str) {
-    assert!(std::env::var_os("REQUIRE_ALL").is_none(), "NOT RUN with REQUIRE_ALL set: {why}");
+    assert!(
+        std::env::var_os("REQUIRE_ALL").is_none(),
+        "NOT RUN with REQUIRE_ALL set: {why}"
+    );
     eprintln!("NOT RUN: {why}");
 }
 
@@ -42,10 +45,17 @@ fn pinned_apr() -> Option<PathBuf> {
 
 #[test]
 fn install_options_contract_holds() {
-    if Command::new("curl").args(["-fsS", "-o", "/dev/null", "https://api.github.com"]).status().map_or(true, |s| !s.success()) {
+    if Command::new("curl")
+        .args(["-fsS", "-o", "/dev/null", "https://api.github.com"])
+        .status()
+        .map_or(true, |s| !s.success())
+    {
         return not_run("install-options needs network access to crates.io and GitHub");
     }
-    assert_contract(Command::new(env!("CARGO_BIN_EXE_install-options")), "contract: one release, three channels");
+    assert_contract(
+        Command::new(env!("CARGO_BIN_EXE_install-options")),
+        "contract: one release, three channels",
+    );
 }
 
 #[test]
@@ -70,12 +80,21 @@ fn verify_install_refuses_a_shadowed_binary() {
     std::fs::copy(&apr, &copy).unwrap();
     let out = Command::new(env!("CARGO_BIN_EXE_verify-install"))
         .arg(&copy)
-        .env("PATH", format!("{}:/usr/bin:/bin", apr.parent().unwrap_or(Path::new("/")).display()))
+        .env(
+            "PATH",
+            format!(
+                "{}:/usr/bin:/bin",
+                apr.parent().unwrap_or(Path::new("/")).display()
+            ),
+        )
         .output()
         .unwrap();
     std::fs::remove_file(&copy).unwrap();
     std::fs::remove_dir(&dir).unwrap();
-    assert!(!out.status.success(), "a shadowed install must fail the contract");
+    assert!(
+        !out.status.success(),
+        "a shadowed install must fail the contract"
+    );
 }
 
 #[test]
@@ -84,5 +103,8 @@ fn run_check_contract_holds() {
     if !model.exists() || pinned_apr().is_none() {
         return not_run("run-check needs apr 0.71.4 and `make models`");
     }
-    assert_contract(Command::new(env!("CARGO_BIN_EXE_run-check")), "contract: greedy decoding is deterministic");
+    assert_contract(
+        Command::new(env!("CARGO_BIN_EXE_run-check")),
+        "contract: greedy decoding is deterministic",
+    );
 }

@@ -1,0 +1,53 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Markdown lint
+        run: make lint
+
+  rust:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust 1.99.1
+        uses: dtolnay/rust-toolchain@1.99.1
+        with:
+          components: clippy
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: rust-${{ runner.os }}-1.99.1-${{ hashFiles('Cargo.lock') }}
+          restore-keys: rust-${{ runner.os }}-1.99.1-
+      - name: Clippy and tests
+        run: make rust
+
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Course structure
+        run: make validate
+
+  gate:
+    runs-on: ubuntu-24.04
+    needs: [lint, rust, validate]
+    steps:
+      - name: All jobs passed
+        run: echo "gate: lint, rust and validate passed"

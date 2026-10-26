@@ -1,5 +1,7 @@
 # Introduction to Aprender
 
+[![ci](https://github.com/paiml/intro-rust-ml-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/paiml/intro-rust-ml-framework/actions/workflows/ci.yml)
+
 **Machine learning in pure Rust, from a first install to a model served over HTTP**
 
 Learn to train, inspect, quantize, serve and compile machine-learning models
@@ -83,7 +85,20 @@ to a classifier embedded in a CLI and served over HTTP.
 
 ## Requirements
 
-- Rust (stable) and `cargo`
+- Rust and `cargo`. CI builds with Rust 1.99.1 and a weekly check builds with the
+  current stable release. Install it for your system:
+
+  **Linux/Ubuntu**
+
+  ```bash
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.99.1 --component clippy
+  ```
+
+  **macOS**
+
+  ```bash
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
+  ```
 - `apr` 0.71.4, the aprender command-line tool. Pick one:
   - prebuilt (Linux x86_64 / aarch64, seconds):
     `curl -LsSf https://paiml.com/apr/install.sh | sh -s -- --version v0.71.4`

@@ -1,0 +1,57 @@
+# Nightly line-coverage measurement. It never runs on a pull request or a push
+# and no other job depends on it. A red run opens or updates one issue.
+name: coverage-lab
+
+on:
+  schedule:
+    - cron: "41 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  coverage-report:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust 1.99.1
+        uses: dtolnay/rust-toolchain@1.99.1
+        with:
+          components: llvm-tools-preview
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: cov-${{ runner.os }}-1.99.1-${{ hashFiles('Cargo.lock') }}
+      - name: Install cargo-llvm-cov
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-llvm-cov@0.8.5
+      - name: Line coverage
+        run: cargo llvm-cov --workspace --locked --summary-only
+
+  report-red:
+    name: report-red
+    needs: [coverage-report]
+    if: ${{ always() && contains(needs.*.result, 'failure') }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Open or update the coverage issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          n=$(gh issue list --search "coverage-lab in:title" --state open --json number --jq '.[0].number // empty')
+          if [ -n "$n" ]; then
+            gh issue comment "$n" --body "Still red: $RUN_URL"
+          else
+            gh issue create --title "coverage-lab: nightly coverage run is red" --body "Nightly coverage run failed: $RUN_URL"
+          fi

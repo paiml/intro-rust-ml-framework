@@ -45,9 +45,32 @@ jobs:
       - name: Course structure
         run: make validate
 
+  coverage-report:
+    # Report mode: prints the line coverage and passes. Coverage is below 100%.
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust 1.99.1
+        uses: dtolnay/rust-toolchain@1.99.1
+        with:
+          components: llvm-tools-preview
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: cov-${{ runner.os }}-1.99.1-${{ hashFiles('Cargo.lock') }}
+      - name: Install cargo-llvm-cov
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-llvm-cov@0.8.5
+      - name: Line coverage (report only)
+        run: cargo llvm-cov --workspace --locked --summary-only
+
   gate:
     runs-on: ubuntu-24.04
-    needs: [lint, rust, validate]
+    needs: [lint, rust, validate, coverage-report]
     steps:
       - name: All jobs passed
-        run: echo "gate: lint, rust and validate passed"
+        run: echo "gate: lint, rust, validate and coverage-report passed"

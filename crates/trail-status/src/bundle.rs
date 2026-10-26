@@ -67,14 +67,19 @@ pub fn new_vectorizer() -> TfidfVectorizer {
 /// Convert aprender's f64 feature matrix to the f32 the classifiers take.
 pub fn to_f32(m: &Matrix<f64>) -> Matrix<f32> {
     let (rows, cols) = m.shape();
-    let data = (0..rows).flat_map(|r| (0..cols).map(move |c| (r, c))).map(|(r, c)| m.get(r, c) as f32).collect();
+    let data = (0..rows)
+        .flat_map(|r| (0..cols).map(move |c| (r, c)))
+        .map(|(r, c)| m.get(r, c) as f32)
+        .collect();
     Matrix::from_vec(rows, cols, data).expect("same shape")
 }
 
 /// `1` for open, `0` for closed: the label vectors the classifiers train on.
 pub fn targets(rows: &[Example]) -> (Vec<usize>, Vec<usize>) {
     (
-        rows.iter().map(|r| usize::from(r.blankets_open())).collect(),
+        rows.iter()
+            .map(|r| usize::from(r.blankets_open()))
+            .collect(),
         rows.iter().map(|r| usize::from(r.rope_open())).collect(),
     )
 }
@@ -84,7 +89,11 @@ impl TrailStatusBundle {
     pub fn train(train: &[Example]) -> Result<Self, String> {
         let texts: Vec<&str> = train.iter().map(|r| r.text.as_str()).collect();
         let mut vectorizer = new_vectorizer();
-        let x = to_f32(&vectorizer.fit_transform(&texts).map_err(|e| e.to_string())?);
+        let x = to_f32(
+            &vectorizer
+                .fit_transform(&texts)
+                .map_err(|e| e.to_string())?,
+        );
         let (yb, yr) = targets(train);
 
         let mut blankets_clf = new_classifier();
@@ -93,7 +102,11 @@ impl TrailStatusBundle {
         rope_clf.fit(&x, &yr).map_err(|e| e.to_string())?;
 
         Ok(Self {
-            vocabulary: vectorizer.vocabulary().iter().map(|(k, v)| (k.clone(), *v)).collect(),
+            vocabulary: vectorizer
+                .vocabulary()
+                .iter()
+                .map(|(k, v)| (k.clone(), *v))
+                .collect(),
             idf: vectorizer.idf_values().to_vec(),
             ngram_range: NGRAM_RANGE,
             blankets_clf,
@@ -103,7 +116,10 @@ impl TrailStatusBundle {
 
     /// TF-IDF features for many texts, one row each.
     pub fn features(&self, texts: &[&str]) -> Matrix<f32> {
-        let data: Vec<f32> = texts.iter().flat_map(|t| tfidf_transform(t, &self.vocabulary, &self.idf, self.ngram_range)).collect();
+        let data: Vec<f32> = texts
+            .iter()
+            .flat_map(|t| tfidf_transform(t, &self.vocabulary, &self.idf, self.ngram_range))
+            .collect();
         Matrix::from_vec(texts.len(), self.idf.len(), data).expect("one row per text")
     }
 
@@ -132,7 +148,10 @@ impl TrailStatusBundle {
     /// Save as a single uncompressed `.apr` file. The header's `created_at` is
     /// [`SAVED_AT`], not the clock, so training twice gives the same bytes.
     pub fn save(&self, path: &str) -> Result<(), String> {
-        let mut opts = SaveOptions { compression: Compression::None, ..SaveOptions::default() };
+        let mut opts = SaveOptions {
+            compression: Compression::None,
+            ..SaveOptions::default()
+        };
         opts.metadata.created_at = SAVED_AT.to_string();
         save(self, ModelType::NeuralCustom, path, opts).map_err(|e| e.to_string())
     }
@@ -178,7 +197,10 @@ mod tests {
     use super::*;
 
     fn vocab() -> BTreeMap<String, usize> {
-        [("rope", 0), ("mill", 1), ("rope_mill", 2), ("open", 3)].iter().map(|(k, v)| (k.to_string(), *v)).collect()
+        [("rope", 0), ("mill", 1), ("rope_mill", 2), ("open", 3)]
+            .iter()
+            .map(|(k, v)| (k.to_string(), *v))
+            .collect()
     }
 
     #[test]
@@ -190,7 +212,11 @@ mod tests {
 
     #[test]
     fn unknown_text_gives_a_zero_row() {
-        assert!(tfidf_transform("nothing known here", &vocab(), &[1.0; 4], (1, 2)).iter().all(|&x| x == 0.0));
+        assert!(
+            tfidf_transform("nothing known here", &vocab(), &[1.0; 4], (1, 2))
+                .iter()
+                .all(|&x| x == 0.0)
+        );
     }
 
     #[test]

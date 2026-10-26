@@ -20,19 +20,32 @@ use regression::{load_dataset, to_xy, SPLIT_SEED, TEST_SIZE};
 fn rows_of(x: &Matrix<f32>, y: &Vector<f32>) -> Vec<[i64; 3]> {
     let tenths = |v: f32| (v * 10.0).round() as i64;
     (0..x.shape().0)
-        .map(|i| [tenths(x.get(i, 0)), tenths(x.get(i, 1)), tenths(y.as_slice()[i])])
+        .map(|i| {
+            [
+                tenths(x.get(i, 0)),
+                tenths(x.get(i, 1)),
+                tenths(y.as_slice()[i]),
+            ]
+        })
         .collect()
 }
 
 fn main() {
     let rows = load_dataset().expect("run `cargo run -p regression --bin gen-data` first");
     let (x, y) = to_xy(&rows);
-    println!("dataset: {} rows, features [rainfall_mm, sun_hours]", rows.len());
+    println!(
+        "dataset: {} rows, features [rainfall_mm, sun_hours]",
+        rows.len()
+    );
 
     // Step 1: Split BEFORE fitting. The test rows are locked away from here on.
     let (x_train, x_test, y_train, y_test) =
         train_test_split(&x, &y, TEST_SIZE, Some(SPLIT_SEED)).expect("valid split");
-    println!("split:   {} train / {} test (seed {SPLIT_SEED})", y_train.len(), y_test.len());
+    println!(
+        "split:   {} train / {} test (seed {SPLIT_SEED})",
+        y_train.len(),
+        y_test.len()
+    );
 
     // Step 2: Fit on the training rows only.
     let mut model = LinearRegression::new();
@@ -64,8 +77,15 @@ fn main() {
     parts.extend(rows_of(&x_test, &y_test));
     all.sort_unstable();
     parts.sort_unstable();
-    assert_eq!(y_train.len() + y_test.len(), rows.len(), "sizes must add up");
-    assert_eq!(all, parts, "every row must land in exactly one side of the split");
+    assert_eq!(
+        y_train.len() + y_test.len(),
+        rows.len(),
+        "sizes must add up"
+    );
+    assert_eq!(
+        all, parts,
+        "every row must land in exactly one side of the split"
+    );
     // ...and the held-out score clears the bar.
     assert!(test_r2 >= 0.90, "test R² {test_r2:.3} is below 0.90");
     println!("contract: honest evaluation (train ∪ test = all rows, disjoint; test R² {test_r2:.3} >= 0.90) OK");

@@ -39,19 +39,44 @@ fn main() {
         *by_part.entry(component(&t.name)).or_default() += t.params();
     }
 
-    println!("architecture {}: {} tensors, {} layers", summary.architecture, tensors.len(), layer_count(&tensors));
+    println!(
+        "architecture {}: {} tensors, {} layers",
+        summary.architecture,
+        tensors.len(),
+        layer_count(&tensors)
+    );
     println!("where the parameters live:");
     for (part, n) in &by_part {
-        println!("  {part:<10} {:>13}  {:5.1}%", grouped(*n), 100.0 * *n as f64 / total as f64);
+        println!(
+            "  {part:<10} {:>13}  {:5.1}%",
+            grouped(*n),
+            100.0 * *n as f64 / total as f64
+        );
     }
     println!("sum of tensor shapes  {:>13}", grouped(total));
-    println!("apr inspect says      {:>13}", grouped(summary.total_params));
+    println!(
+        "apr inspect says      {:>13}",
+        grouped(summary.total_params)
+    );
 
-    assert_eq!(total, summary.total_params, "tensor shapes must add up to the reported total");
-    assert_eq!(tensors.len() as u64, summary.tensor_count, "tensor counts must agree");
+    assert_eq!(
+        total, summary.total_params,
+        "tensor shapes must add up to the reported total"
+    );
+    assert_eq!(
+        tensors.len() as u64,
+        summary.tensor_count,
+        "tensor counts must agree"
+    );
     for t in &tensors {
-        let width = bytes_per_value(&t.dtype).unwrap_or_else(|| panic!("{}: unknown dtype {}", t.name, t.dtype));
-        assert_eq!(t.size_bytes, t.params() * width, "{}: bytes != params x dtype width", t.name);
+        let width = bytes_per_value(&t.dtype)
+            .unwrap_or_else(|| panic!("{}: unknown dtype {}", t.name, t.dtype));
+        assert_eq!(
+            t.size_bytes,
+            t.params() * width,
+            "{}: bytes != params x dtype width",
+            t.name
+        );
     }
     println!(
         "contract: parameters add up ({} tensor shapes sum to {}, bytes = params x dtype width) OK",

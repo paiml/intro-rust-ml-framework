@@ -69,7 +69,8 @@ pub fn generate(n: usize, seed: u64) -> Vec<Row> {
             let rainfall_mm = (rng.next_unit() * 400.0).round() / 10.0; // 0.0..=40.0
             let sun_hours = (rng.next_unit() * 100.0).round() / 10.0; // 0.0..=10.0
             let noise = (rng.next_unit() * 2.0 - 1.0) * NOISE_HALF_WIDTH;
-            let y = TRUE_INTERCEPT + TRUE_RAIN_COEF * rainfall_mm + TRUE_SUN_COEF * sun_hours + noise;
+            let y =
+                TRUE_INTERCEPT + TRUE_RAIN_COEF * rainfall_mm + TRUE_SUN_COEF * sun_hours + noise;
             Row {
                 rainfall_mm,
                 sun_hours,
@@ -84,8 +85,12 @@ pub fn to_csv(rows: &[Row]) -> String {
     let mut out = String::from(CSV_HEADER);
     out.push('\n');
     for r in rows {
-        writeln!(out, "{:.1},{:.1},{:.1}", r.rainfall_mm, r.sun_hours, r.hours_until_reopen)
-            .expect("writing to a String cannot fail");
+        writeln!(
+            out,
+            "{:.1},{:.1},{:.1}",
+            r.rainfall_mm, r.sun_hours, r.hours_until_reopen
+        )
+        .expect("writing to a String cannot fail");
     }
     out
 }
@@ -106,9 +111,17 @@ pub fn parse_csv(text: &str) -> Result<Vec<Row>, String> {
                 .collect::<Result<_, _>>()
                 .map_err(|e| format!("row {}: {e}", i + 2))?;
             if f.len() != 3 {
-                return Err(format!("row {}: expected 3 columns, got {}", i + 2, f.len()));
+                return Err(format!(
+                    "row {}: expected 3 columns, got {}",
+                    i + 2,
+                    f.len()
+                ));
             }
-            Ok(Row { rainfall_mm: f[0], sun_hours: f[1], hours_until_reopen: f[2] })
+            Ok(Row {
+                rainfall_mm: f[0],
+                sun_hours: f[1],
+                hours_until_reopen: f[2],
+            })
         })
         .collect()
 }
@@ -141,7 +154,10 @@ mod tests {
 
     #[test]
     fn generation_is_deterministic() {
-        assert_eq!(to_csv(&generate(N_ROWS, DATA_SEED)), to_csv(&generate(N_ROWS, DATA_SEED)));
+        assert_eq!(
+            to_csv(&generate(N_ROWS, DATA_SEED)),
+            to_csv(&generate(N_ROWS, DATA_SEED))
+        );
     }
 
     #[test]
@@ -152,9 +168,13 @@ mod tests {
     #[test]
     fn noise_stays_inside_its_stated_bound() {
         for r in generate(N_ROWS, DATA_SEED) {
-            let clean = TRUE_INTERCEPT + TRUE_RAIN_COEF * r.rainfall_mm + TRUE_SUN_COEF * r.sun_hours;
+            let clean =
+                TRUE_INTERCEPT + TRUE_RAIN_COEF * r.rainfall_mm + TRUE_SUN_COEF * r.sun_hours;
             // +0.05 for the one-decimal rounding of the target.
-            assert!((r.hours_until_reopen - clean).abs() <= NOISE_HALF_WIDTH + 0.05, "{r:?}");
+            assert!(
+                (r.hours_until_reopen - clean).abs() <= NOISE_HALF_WIDTH + 0.05,
+                "{r:?}"
+            );
         }
     }
 

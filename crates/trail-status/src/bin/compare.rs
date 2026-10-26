@@ -36,8 +36,15 @@ fn score(
 ) -> Score {
     let pb = fit_predict(train_y.0);
     let pr = fit_predict(train_y.1);
-    let both = (0..gold.0.len()).filter(|&i| pb[i] == gold.0[i] && pr[i] == gold.1[i]).count();
-    Score { name, blankets: accuracy(&pb, gold.0), rope: accuracy(&pr, gold.1), both }
+    let both = (0..gold.0.len())
+        .filter(|&i| pb[i] == gold.0[i] && pr[i] == gold.1[i])
+        .count();
+    Score {
+        name,
+        blankets: accuracy(&pb, gold.0),
+        rope: accuracy(&pr, gold.1),
+        both,
+    }
 }
 
 fn majority(y: &[usize]) -> usize {
@@ -57,7 +64,11 @@ fn main() {
     let (vb, vr) = targets(&val);
     let gold = (vb.as_slice(), vr.as_slice());
     let ty = (tb.as_slice(), tr.as_slice());
-    println!("same features for every candidate: {} rows x {} TF-IDF terms", x_train.shape().0, x_train.shape().1);
+    println!(
+        "same features for every candidate: {} rows x {} TF-IDF terms",
+        x_train.shape().0,
+        x_train.shape().1
+    );
 
     let scores = [
         score("majority class", gold, |y| vec![majority(y); val.len()], ty),
@@ -75,7 +86,10 @@ fn main() {
             "logistic, unweighted",
             gold,
             |y| {
-                let mut m = LogisticRegression::new().with_learning_rate(0.5).with_max_iter(5000).with_l2_penalty(0.001);
+                let mut m = LogisticRegression::new()
+                    .with_learning_rate(0.5)
+                    .with_max_iter(5000)
+                    .with_l2_penalty(0.001);
                 m.fit(&x_train, y).expect("fit");
                 m.predict(&x_val)
             },
@@ -93,17 +107,38 @@ fn main() {
         ),
     ];
 
-    println!("\n{:<22} {:>14} {:>10} {:>12}", "candidate", "Blankets Creek", "Rope Mill", "both right");
+    println!(
+        "\n{:<22} {:>14} {:>10} {:>12}",
+        "candidate", "Blankets Creek", "Rope Mill", "both right"
+    );
     for s in &scores {
-        println!("{:<22} {:>14.3} {:>10.3} {:>9}/{}", s.name, s.blankets, s.rope, s.both, val.len());
+        println!(
+            "{:<22} {:>14.3} {:>10.3} {:>9}/{}",
+            s.name,
+            s.blankets,
+            s.rope,
+            s.both,
+            val.len()
+        );
     }
 
     // Most rows with both answers right; on a tie, the one listed first.
-    let chosen = scores.iter().skip(1).fold(&scores[1], |best, s| if s.both > best.both { s } else { best });
+    let chosen = scores.iter().skip(1).fold(
+        &scores[1],
+        |best, s| if s.both > best.both { s } else { best },
+    );
     let base = &scores[0];
-    println!("\nchosen: {} ({} of {} rows with both trails right)", chosen.name, chosen.both, val.len());
+    println!(
+        "\nchosen: {} ({} of {} rows with both trails right)",
+        chosen.name,
+        chosen.both,
+        val.len()
+    );
 
-    assert!(chosen.blankets > base.blankets, "beat the baseline on Blankets Creek");
+    assert!(
+        chosen.blankets > base.blankets,
+        "beat the baseline on Blankets Creek"
+    );
     assert!(chosen.rope > base.rope, "beat the baseline on Rope Mill");
     println!(
         "contract: the choice is earned ({} beats majority class on both trails: {:.3} > {:.3}, {:.3} > {:.3}) OK",

@@ -22,7 +22,10 @@ fn main() {
     let p = model.predict(text);
 
     let in_range = |c: f32| (0.5..=1.0).contains(&c);
-    assert!(in_range(p.blankets_creek_confidence) && in_range(p.rope_mill_confidence), "confidence out of range: {p:?}");
+    assert!(
+        in_range(p.blankets_creek_confidence) && in_range(p.rope_mill_confidence),
+        "confidence out of range: {p:?}"
+    );
 
     if json {
         println!("{}", serde_json::to_string(&p).expect("serialize"));
@@ -30,6 +33,14 @@ fn main() {
     }
     let verdict = |open: bool| if open { "OPEN" } else { "CLOSED" };
     println!("input: {text:?}");
-    println!("  Blankets Creek: {:<6} ({:.1}% confidence)", verdict(p.blankets_creek_open), p.blankets_creek_confidence * 100.0);
-    println!("  Rope Mill:      {:<6} ({:.1}% confidence)", verdict(p.rope_mill_open), p.rope_mill_confidence * 100.0);
+    println!(
+        "  Blankets Creek: {:<6} ({:.1}% confidence)",
+        verdict(p.blankets_creek_open),
+        p.blankets_creek_confidence * 100.0
+    );
+    println!(
+        "  Rope Mill:      {:<6} ({:.1}% confidence)",
+        verdict(p.rope_mill_open),
+        p.rope_mill_confidence * 100.0
+    );
 }

@@ -15,14 +15,19 @@ use std::collections::{BTreeMap, HashSet};
 use trail_status::data::{label_map, load, tokens, Example, LABELS, TRAIN_PATH, VAL_PATH};
 
 /// Common words that say nothing about trail status.
-const STOP: &[&str] = &["the", "are", "is", "at", "and", "to", "due", "of", "for", "will", "be", "a", "all", "in"];
+const STOP: &[&str] = &[
+    "the", "are", "is", "at", "and", "to", "due", "of", "for", "will", "be", "a", "all", "in",
+];
 
 fn balance(name: &str, rows: &[Example]) {
     let mut counts = [0usize; 4];
     rows.iter().for_each(|r| counts[r.label] += 1);
     println!("  {name}");
     for (label, n) in LABELS.iter().zip(counts) {
-        println!("    {label:<26} {n:>3}  ({:>2.0}%)", 100.0 * n as f64 / rows.len() as f64);
+        println!(
+            "    {label:<26} {n:>3}  ({:>2.0}%)",
+            100.0 * n as f64 / rows.len() as f64
+        );
     }
 }
 
@@ -34,7 +39,9 @@ fn main() {
     println!("label balance");
     balance("train", &train);
     balance("val", &val);
-    let open = |f: fn(&Example) -> bool| 100.0 * train.iter().filter(|r| f(r)).count() as f64 / train.len() as f64;
+    let open = |f: fn(&Example) -> bool| {
+        100.0 * train.iter().filter(|r| f(r)).count() as f64 / train.len() as f64
+    };
     println!(
         "train open rate: Blankets Creek {:.0}%   Rope Mill {:.0}%",
         open(Example::blankets_open),
@@ -61,18 +68,33 @@ fn main() {
     }
     let mut top: Vec<(String, usize)> = freq.into_iter().collect();
     top.sort_by(|a, b| b.1.cmp(&a.1).then(a.0.cmp(&b.0)));
-    let top: Vec<String> = top.iter().take(10).map(|(w, n)| format!("{w} {n}")).collect();
+    let top: Vec<String> = top
+        .iter()
+        .take(10)
+        .map(|(w, n)| format!("{w} {n}"))
+        .collect();
     println!("most frequent words: {}", top.join(", "));
 
     let train_texts: HashSet<&str> = train.iter().map(|r| r.text.as_str()).collect();
-    let leaked = val.iter().filter(|r| train_texts.contains(r.text.as_str())).count();
+    let leaked = val
+        .iter()
+        .filter(|r| train_texts.contains(r.text.as_str()))
+        .count();
     let duplicates = train.len() - train_texts.len();
-    println!("leakage: {leaked} validation rows also in training   duplicates in training: {duplicates}");
+    println!(
+        "leakage: {leaked} validation rows also in training   duplicates in training: {duplicates}"
+    );
 
     let map = label_map().expect("label map");
     assert_eq!(leaked, 0, "validation text must never appear in training");
     assert_eq!(duplicates, 0, "no training row may appear twice");
-    assert!(train.iter().chain(&val).all(|r| r.label < 4), "every label in 0..=3");
-    assert_eq!(map, LABELS, "label_map.json must name the labels the code decodes");
+    assert!(
+        train.iter().chain(&val).all(|r| r.label < 4),
+        "every label in 0..=3"
+    );
+    assert_eq!(
+        map, LABELS,
+        "label_map.json must name the labels the code decodes"
+    );
     println!("contract: the data is fit to learn from (train ∩ val = ∅, no duplicates, labels in 0..=3, label map agrees) OK");
 }

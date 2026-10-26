@@ -21,11 +21,17 @@ fn main() {
     };
     let read = |p: &String| std::fs::read_to_string(p).unwrap_or_else(|e| panic!("read {p}: {e}"));
     let (before, after) = (read(before_path), read(after_path));
-    let get = |page: &str, k: &str| prometheus_value(page, k).unwrap_or_else(|| panic!("no {k} on the metrics page"));
+    let get = |page: &str, k: &str| {
+        prometheus_value(page, k).unwrap_or_else(|| panic!("no {k} on the metrics page"))
+    };
 
     let handled = get(&after, REQUESTS) - get(&before, REQUESTS);
     let failed = get(&after, FAILED) - get(&before, FAILED);
-    println!("{REQUESTS}: {} -> {}", get(&before, REQUESTS), get(&after, REQUESTS));
+    println!(
+        "{REQUESTS}: {} -> {}",
+        get(&before, REQUESTS),
+        get(&after, REQUESTS)
+    );
     println!("requests served for the other app: {handled}, failed: {failed}");
 
     assert!(handled >= 1.0, "the local server handled no requests");

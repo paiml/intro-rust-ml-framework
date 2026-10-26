@@ -34,7 +34,10 @@ pub struct Summary {
 
 pub fn parse_inspect(json: &str) -> Result<Summary, String> {
     let v: Value = serde_json::from_str(json).map_err(|e| format!("inspect JSON: {e}"))?;
-    let num = |k: &str| v[k].as_u64().ok_or_else(|| format!("inspect JSON: no numeric {k:?}"));
+    let num = |k: &str| {
+        v[k].as_u64()
+            .ok_or_else(|| format!("inspect JSON: no numeric {k:?}"))
+    };
     Ok(Summary {
         total_params: num("total_params")?,
         tensor_count: num("tensor_count")?,
@@ -50,7 +53,10 @@ pub fn parse_tensors(json: &str) -> Result<Vec<Tensor>, String> {
         .iter()
         .map(|t| {
             Ok(Tensor {
-                name: t["name"].as_str().ok_or("tensor without a name")?.to_string(),
+                name: t["name"]
+                    .as_str()
+                    .ok_or("tensor without a name")?
+                    .to_string(),
                 shape: t["shape"]
                     .as_array()
                     .ok_or("tensor without a shape")?
@@ -58,7 +64,9 @@ pub fn parse_tensors(json: &str) -> Result<Vec<Tensor>, String> {
                     .map(|d| d.as_u64().ok_or("non-integer dimension"))
                     .collect::<Result<_, _>>()?,
                 dtype: t["dtype"].as_str().unwrap_or("?").to_string(),
-                size_bytes: t["size_bytes"].as_u64().ok_or("tensor without size_bytes")?,
+                size_bytes: t["size_bytes"]
+                    .as_u64()
+                    .ok_or("tensor without size_bytes")?,
             })
         })
         .collect::<Result<_, &str>>()
@@ -96,7 +104,15 @@ pub fn component(name: &str) -> &'static str {
 pub fn layer_count(tensors: &[Tensor]) -> u64 {
     tensors
         .iter()
-        .filter_map(|t| t.name.split("layers.").nth(1)?.split('.').next()?.parse::<u64>().ok())
+        .filter_map(|t| {
+            t.name
+                .split("layers.")
+                .nth(1)?
+                .split('.')
+                .next()?
+                .parse::<u64>()
+                .ok()
+        })
         .max()
         .map_or(0, |n| n + 1)
 }
@@ -129,7 +145,10 @@ pub fn check_quantized(baseline: &QuantRow, quantized: &[QuantRow]) -> Result<()
             return Err(format!("{} is not smaller than {}", q.name, baseline.name));
         }
         if q.answer != baseline.answer {
-            return Err(format!("{} answered {:?}, baseline answered {:?}", q.name, q.answer, baseline.answer));
+            return Err(format!(
+                "{} answered {:?}, baseline answered {:?}",
+                q.name, q.answer, baseline.answer
+            ));
         }
     }
     Ok(())
@@ -152,7 +171,11 @@ pub struct Completion {
 pub fn parse_completion(json: &str) -> Result<Completion, String> {
     let v: Value = serde_json::from_str(json).map_err(|e| format!("completion JSON: {e}"))?;
     let choice = &v["choices"][0];
-    let s = |x: &Value, what: &str| x.as_str().map(str::to_string).ok_or(format!("missing {what}"));
+    let s = |x: &Value, what: &str| {
+        x.as_str()
+            .map(str::to_string)
+            .ok_or(format!("missing {what}"))
+    };
     let n = |k: &str| v["usage"][k].as_u64().ok_or(format!("missing usage.{k}"));
     Ok(Completion {
         object: s(&v["object"], "object")?,
@@ -171,7 +194,9 @@ pub fn join_stream(sse: &str) -> Result<(String, usize), String> {
     let mut text = String::new();
     let mut chunks = 0;
     for line in sse.lines() {
-        let Some(data) = line.strip_prefix("data: ") else { continue };
+        let Some(data) = line.strip_prefix("data: ") else {
+            continue;
+        };
         if data.trim() == "[DONE]" {
             break;
         }
@@ -188,12 +213,10 @@ pub fn join_stream(sse: &str) -> Result<(String, usize), String> {
 
 /// Read one counter from a Prometheus text page, e.g. `realizar_requests_total`.
 pub fn prometheus_value(page: &str, name: &str) -> Option<f64> {
-    page.lines()
-        .filter(|l| !l.starts_with('#'))
-        .find_map(|l| {
-            let (k, v) = l.split_once(' ')?;
-            (k == name).then(|| v.trim().parse().ok())?
-        })
+    page.lines().filter(|l| !l.starts_with('#')).find_map(|l| {
+        let (k, v) = l.split_once(' ')?;
+        (k == name).then(|| v.trim().parse().ok())?
+    })
 }
 
 #[cfg(test)]
@@ -215,7 +238,12 @@ mod tests {
     #[test]
     fn real_qwen_bytes_match_bf16() {
         for t in parse_tensors(TENSORS).unwrap() {
-            assert_eq!(t.size_bytes, t.params() * bytes_per_value(&t.dtype).unwrap(), "{}", t.name);
+            assert_eq!(
+                t.size_bytes,
+                t.params() * bytes_per_value(&t.dtype).unwrap(),
+                "{}",
+                t.name
+            );
         }
     }
 
@@ -227,7 +255,10 @@ mod tests {
     #[test]
     fn components_are_named() {
         assert_eq!(component("model.embed_tokens.weight"), "embedding");
-        assert_eq!(component("model.layers.3.self_attn.q_proj.weight"), "attention");
+        assert_eq!(
+            component("model.layers.3.self_attn.q_proj.weight"),
+            "attention"
+        );
         assert_eq!(component("model.layers.3.mlp.up_proj.weight"), "mlp");
         assert_eq!(component("model.layers.3.input_layernorm.weight"), "norm");
     }
@@ -248,13 +279,21 @@ mod tests {
     }
 
     fn row(name: &str, size: u64, answer: &str) -> QuantRow {
-        QuantRow { name: name.into(), size_bytes: size, answer: answer.into() }
+        QuantRow {
+            name: name.into(),
+            size_bytes: size,
+            answer: answer.into(),
+        }
     }
 
     #[test]
     fn smaller_and_same_answer_passes() {
         let base = row("f16", 1000, "Paris");
-        assert!(check_quantized(&base, &[row("int8", 640, "Paris"), row("int4", 360, "Paris")]).is_ok());
+        assert!(check_quantized(
+            &base,
+            &[row("int8", 640, "Paris"), row("int4", 360, "Paris")]
+        )
+        .is_ok());
     }
 
     #[test]
@@ -302,7 +341,10 @@ mod tests {
         let page = "# HELP realizar_requests_total x\n# TYPE realizar_requests_total counter\n\
                     realizar_requests_total 4\nrealizar_requests_failed 0\n";
         assert_eq!(prometheus_value(page, "realizar_requests_total"), Some(4.0));
-        assert_eq!(prometheus_value(page, "realizar_requests_failed"), Some(0.0));
+        assert_eq!(
+            prometheus_value(page, "realizar_requests_failed"),
+            Some(0.0)
+        );
         assert_eq!(prometheus_value(page, "missing"), None);
     }
 }

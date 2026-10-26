@@ -21,18 +21,26 @@ const SENTENCES: [&str; 4] = [
 ];
 
 fn main() {
-    let addr = std::env::args().nth(1).unwrap_or_else(|| "127.0.0.1:8080".to_string());
-    let cli = std::env::current_exe().expect("own path").with_file_name("trail-status-cli");
+    let addr = std::env::args()
+        .nth(1)
+        .unwrap_or_else(|| "127.0.0.1:8080".to_string());
+    let cli = std::env::current_exe()
+        .expect("own path")
+        .with_file_name("trail-status-cli");
 
     let verdict = |open: bool| if open { "open" } else { "closed" };
     let mut agree = 0;
     for text in SENTENCES {
-        let out = Command::new(&cli).args(["--json", text]).output().expect("run trail-status-cli");
+        let out = Command::new(&cli)
+            .args(["--json", text])
+            .output()
+            .expect("run trail-status-cli");
         assert!(out.status.success(), "the CLI failed on {text:?}");
         let from_cli: Prediction = serde_json::from_slice(&out.stdout).expect("CLI JSON");
 
         let body = serde_json::json!({ "text": text }).to_string();
-        let r = request(&addr, "POST", "/predict", Some(&body)).unwrap_or_else(|e| panic!("{e} (is the API running?)"));
+        let r = request(&addr, "POST", "/predict", Some(&body))
+            .unwrap_or_else(|e| panic!("{e} (is the API running?)"));
         assert_eq!(r.status, 200, "the API refused {text:?}");
         let from_api: Prediction = serde_json::from_str(&r.body).expect("API JSON");
 
@@ -47,6 +55,13 @@ fn main() {
         );
     }
 
-    assert_eq!(agree, SENTENCES.len(), "the API and the CLI must agree on every sentence");
-    println!("contract: one model, two front ends (API == CLI on {agree}/{} sentences) OK", SENTENCES.len());
+    assert_eq!(
+        agree,
+        SENTENCES.len(),
+        "the API and the CLI must agree on every sentence"
+    );
+    println!(
+        "contract: one model, two front ends (API == CLI on {agree}/{} sentences) OK",
+        SENTENCES.len()
+    );
 }

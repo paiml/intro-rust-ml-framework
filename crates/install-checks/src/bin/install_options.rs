@@ -29,14 +29,24 @@ fn main() {
     let tag_ref = format!("refs/tags/v{v}");
     let tags = run("git", &["ls-remote", "--tags", REPO, &tag_ref]).expect("git ls-remote");
     let tag_commit = tags.split_whitespace().next().unwrap_or("");
-    println!("git source  {REPO} tag v{v} -> {}", tag_commit.get(..12).unwrap_or("(missing)"));
+    println!(
+        "git source  {REPO} tag v{v} -> {}",
+        tag_commit.get(..12).unwrap_or("(missing)")
+    );
 
     // 3. prebuilt archives on the GitHub release.
     let api = format!("https://api.github.com/repos/paiml/aprender/releases/tags/v{v}");
-    let assets = release_asset_names(&run("curl", &["-fsSL", &api]).expect("GitHub API")).expect("release JSON");
+    let assets = release_asset_names(&run("curl", &["-fsSL", &api]).expect("GitHub API"))
+        .expect("release JSON");
     let prefix = format!("apr-v{v}-");
-    let archives: Vec<&String> = assets.iter().filter(|a| a.starts_with(&prefix) && a.ends_with(".tar.gz")).collect();
-    println!("prebuilt    {} apr archives on the GitHub release:", archives.len());
+    let archives: Vec<&String> = assets
+        .iter()
+        .filter(|a| a.starts_with(&prefix) && a.ends_with(".tar.gz"))
+        .collect();
+    println!(
+        "prebuilt    {} apr archives on the GitHub release:",
+        archives.len()
+    );
     for a in &archives {
         println!("              {a}");
     }
@@ -45,10 +55,19 @@ fn main() {
     let has_checksum = assets.contains(&format!("{archive}.sha256"));
     let found = |yes: bool| if yes { "found" } else { "MISSING" };
     println!("this machine  {:<56}{}", archive, found(has_archive));
-    println!("              {:<56}{}", format!("{archive}.sha256"), found(has_checksum));
+    println!(
+        "              {:<56}{}",
+        format!("{archive}.sha256"),
+        found(has_checksum)
+    );
 
     assert_eq!(crates_version, v, "crates.io must publish {v}");
     assert!(tag_commit.len() == 40, "the git remote must have tag v{v}");
-    assert!(has_archive && has_checksum, "the release must carry {archive} and its .sha256");
-    println!("contract: one release, three channels (crates.io, git tag, prebuilt archive: all {v}) OK");
+    assert!(
+        has_archive && has_checksum,
+        "the release must carry {archive} and its .sha256"
+    );
+    println!(
+        "contract: one release, three channels (crates.io, git tag, prebuilt archive: all {v}) OK"
+    );
 }

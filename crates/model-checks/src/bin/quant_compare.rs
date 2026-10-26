@@ -26,18 +26,43 @@ const LESSON_MODELS: [&str; 3] = [
 ];
 
 fn run(model: &str) -> (QuantRow, f64) {
-    let size_bytes = std::fs::metadata(model).unwrap_or_else(|e| panic!("{model}: {e}")).len();
+    let size_bytes = std::fs::metadata(model)
+        .unwrap_or_else(|e| panic!("{model}: {e}"))
+        .len();
     let start = Instant::now();
     let out = Command::new("apr")
-        .args(["run", model, "-p", PROMPT, "-n", "12", "--chat", "--temperature", "0", "--no-gpu"])
+        .args([
+            "run",
+            model,
+            "-p",
+            PROMPT,
+            "-n",
+            "12",
+            "--chat",
+            "--temperature",
+            "0",
+            "--no-gpu",
+        ])
         .output()
         .expect("spawn apr");
     let secs = start.elapsed().as_secs_f64();
     let stdout = String::from_utf8_lossy(&out.stdout);
-    assert!(out.status.success(), "apr run {model} failed:\n{}", String::from_utf8_lossy(&out.stderr));
-    let answer = parse_run_output(&stdout).unwrap_or_else(|| panic!("no answer from {model}:\n{stdout}"));
+    assert!(
+        out.status.success(),
+        "apr run {model} failed:\n{}",
+        String::from_utf8_lossy(&out.stderr)
+    );
+    let answer =
+        parse_run_output(&stdout).unwrap_or_else(|| panic!("no answer from {model}:\n{stdout}"));
     let name = model.rsplit('/').next().unwrap_or(model).to_string();
-    (QuantRow { name, size_bytes, answer }, secs)
+    (
+        QuantRow {
+            name,
+            size_bytes,
+            answer,
+        },
+        secs,
+    )
 }
 
 fn main() {
@@ -51,7 +76,10 @@ fn main() {
         std::process::exit(2);
     }
     println!("prompt: {PROMPT:?} (greedy)\n");
-    println!("{:<34} {:>8} {:>6}  {:<8} {:>6}", "model", "MiB", "size", "answer", "time");
+    println!(
+        "{:<34} {:>8} {:>6}  {:<8} {:>6}",
+        "model", "MiB", "size", "answer", "time"
+    );
 
     // All models load at once; each row prints the moment its model answers.
     let (tx, rx) = std::sync::mpsc::channel();
@@ -66,11 +94,20 @@ fn main() {
     let mut results: Vec<Option<QuantRow>> = vec![None; models.len()];
     for (i, (row, secs)) in rx {
         let share = 100.0 * row.size_bytes as f64 / baseline_size as f64;
-        println!("{:<34} {:>8.0} {:>5.0}%  {:<8} {:>5.1}s", row.name, mib(row.size_bytes), share, row.answer, secs);
+        println!(
+            "{:<34} {:>8.0} {:>5.0}%  {:<8} {:>5.1}s",
+            row.name,
+            mib(row.size_bytes),
+            share,
+            row.answer,
+            secs
+        );
         results[i] = Some(row);
     }
     println!();
-    let mut results = results.into_iter().map(|r| r.expect("every model answered"));
+    let mut results = results
+        .into_iter()
+        .map(|r| r.expect("every model answered"));
     let baseline = results.next().expect("baseline");
     let rows: Vec<QuantRow> = results.collect();
     assert_eq!(rows.len(), quantized_paths.len());

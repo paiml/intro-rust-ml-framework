@@ -22,7 +22,10 @@ pub const MODEL_PATH: &str = "crates/trail-status/models/trail_status_model.apr"
 /// The SHA-256 of some bytes, as lowercase hex (the same string `sha256sum` prints).
 pub fn sha256_hex(bytes: &[u8]) -> String {
     use sha2::{Digest, Sha256};
-    Sha256::digest(bytes).iter().map(|b| format!("{b:02x}")).collect()
+    Sha256::digest(bytes)
+        .iter()
+        .map(|b| format!("{b:02x}"))
+        .collect()
 }
 
 #[cfg(test)]
